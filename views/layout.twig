@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/styles/colors.css">
+    <link rel='stylesheet' href='/styles/style.css' />
+    {% block style %}{% endblock %}
+  </head>
+  
+  <body>
+    {% block body %}{% endblock %}
+  </body>
+  <script src='/js/theme.js'></script>
+  {% block scripts %}{% endblock %}
+</html>

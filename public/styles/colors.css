@@ -1,0 +1,20 @@
+:root {
+    --main-color: #D65A00;
+	--secondary-color: #7C4A1A;
+	--warning-color: #FF3010;
+    --bg-color: #FDF6E4;
+    --bg-color-alt: #FBEBD2;
+	--bg: linear-gradient(180deg, #FDF6E4, #FBEBD2);
+	--bg-overlay: linear-gradient(180deg, #FDF6E430, #FDF6E470);
+	--text-color: #2B2B2B;
+	--accent-color: #E8A900;
+	--highlight-color: #C47A10;
+}
+
+.dark-mode {
+    --bg-color: #1C1B1A;
+	--bg-color-alt: #312D25;
+	--bg: linear-gradient(180deg, #1C1B1A, #2A2826);
+	--bg-overlay: linear-gradient(180deg, #1C1B1A80, #1C1B1AE0);
+	--text-color: #F5E6C8;
+}
