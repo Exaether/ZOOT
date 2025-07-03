@@ -1,7 +1,7 @@
 # The ZOOT system
 
-A set of tools for Arknights.
-I don't trust PRTS anymore, so i created this.
+A set of tools for Arknights.  
+I don't trust PRTS anymore, so i created this.  
 ZOOT can help you analyse multiple things, including:
 
 - Review operators
