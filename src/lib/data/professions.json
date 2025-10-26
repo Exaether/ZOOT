@@ -1,0 +1,10 @@
+{
+		"PIONEER": "vanguard",
+		"WARRIOR": "guard",
+		"TANK": "defender",
+		"SNIPER": "sniper",
+		"CASTER": "caster",
+		"MEDIC": "medic",
+		"SUPPORT": "supporter",
+		"SPECIAL": "specialist"
+}
