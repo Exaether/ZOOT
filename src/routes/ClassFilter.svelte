@@ -1,7 +1,6 @@
 <script lang="ts">
 	import professions from "$lib/data/professions.json";
-	import subProfs from "$lib/data/subProf.json";
-	import subProfsToProf from "$lib/data/subProfToProf.json";
+	import { puppiz_url } from "$lib/consts";
 
 	let { opFilter = $bindable() } = $props();
 
@@ -34,17 +33,17 @@
 		<button 
 			class="filterButton {selectedClass == prof ? "activeFilter" : ""}" 
 			onclick="{() => setClassFilter(prof) }"> 
-			<img src="https://raw.githubusercontent.com/PuppiizSunniiz/Arknight-Images/refs/heads/main/classes/class_{ professions[prof] }.png" alt="">
+			<img src="{ puppiz_url }/classes/class_{ professions[prof].name }.png" alt="">
 		</button>
 	{/each}
 </div>
 {#each Object.keys(professions) as prof}
 	<div class="subClassFilter { selectedClass == prof ? "active" : ""}">
-		{#each Object.keys(subProfs).filter((sub) => subProfsToProf[sub] == prof) as sub}
+		{#each Object.keys(professions[prof].subProfs) as sub}
 			<button 
 				class="filterButton {selectedSubClass == sub ? "activeFilter" : ""}" 
 				onclick="{() => setSubClassFilter(sub) }"> 
-				<img src="https://raw.githubusercontent.com/PuppiizSunniiz/Arknight-Images/refs/heads/main/ui/subclass/sub_{ sub }_icon.png" alt="">
+				<img src="{ puppiz_url }/ui/subclass/sub_{ sub }_icon.png" alt="">
 			</button>
 		{/each}
 	</div>

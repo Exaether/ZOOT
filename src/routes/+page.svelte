@@ -10,16 +10,6 @@
 	let operators = $state(data.operators);
 	let opFilter: Function = $state(() => true);
 	let rarityFilter: Function = $state(() => true);
-
-	sortRarity()
-
-	function sortRarity(): void {
-		operators.sort((a, b) => b.rarity - a.rarity)
-	};
-
-	function sortInverted(): void {
-		operators.sort((a, b) => a.rarity - b.rarity)
-	};
 		
 </script>
 

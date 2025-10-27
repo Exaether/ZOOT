@@ -1,10 +1,109 @@
 {
-		"PIONEER": "vanguard",
-		"WARRIOR": "guard",
-		"TANK": "defender",
-		"SNIPER": "sniper",
-		"CASTER": "caster",
-		"MEDIC": "medic",
-		"SUPPORT": "supporter",
-		"SPECIAL": "specialist"
+	"PIONEER": {
+		"name": "vanguard",
+		"subProfs": {
+			"pioneer": "Pioneer",
+			"charger": "Charger",
+			"tactician": "Tactician",
+			"bearer": "Standard Bearer",
+			"agent": "Agent"
+		}
+	},
+	"WARRIOR": {
+		"name": "guard",
+		"subProfs": {
+			"centurion": "Centurion",
+			"fighter": "Fighter",
+			"artsfghter": "Arts Fighter",
+			"instructor": "Instructor",
+			"lord": "Lord",
+			"sword": "Swordmaster",
+			"musha": "Soloblade",
+			"fearless": "Dreadnought",
+			"reaper": "Reaper",
+			"librator": "Liberator",
+			"crusher": "Crusher",
+			"hammer": "Earthshaker",
+			"primguard": "Primal Guard"
+		}
+	},
+	"TANK": {
+		"name": "defender",
+		"subProfs": {
+			"protector": "Protector",
+			"guardian": "Guardian",
+			"unyield": "Juggernaut",
+			"artsprotector": "Arts Protector",
+			"duelist": "Duelist",
+			"fortress": "Fortress",
+			"shotprotector": "Sentry Protector",
+			"primprotector": "Primal Protector"
+		}
+	},
+	"SNIPER": {
+		"name": "sniper",
+		"subProfs": {
+			"fastshot": "Marksman",
+			"closerange": "Heavyshooter",
+			"aoesniper": "Artilleryman",
+			"longrange": "Deadeye",
+			"reaperrange": "Spreadshooter",
+			"siegesniper": "Besieger",
+			"bombarder": "Flinger",
+			"hunter": "Hunter",
+			"loopshooter": "Loopshooter"
+		}
+	},
+	"CASTER": {
+		"name": "caster",
+		"subProfs": {
+			"corecaster": "Core Caster",
+			"splashcaster": "Splash Caster",
+			"funnel": "Mech-accord Caster",
+			"phalanx": "Phalanx Caster",
+			"mystic": "Mystic Caster",
+			"chain": "Chain Caster",
+			"blastcaster": "Blast Caster",
+			"primcaster": "Primal Caster",
+			"soulcaster": "Shaper Caster"
+		}
+	},
+	"MEDIC": {
+		"name": "medic",
+		"subProfs": {
+			"physician": "Medic",
+			"ringhealer": "Multi-target Medic",
+			"healer": "Therapist",
+			"wandermedic": "Wandering Medic",
+			"incantationmedic": "Incantation Medic",
+			"chainhealer": "Chain Medic"
+		}
+	},
+	"SUPPORT": {
+		"name": "supporter",
+		"subProfs": {
+			"slower": "Decel Binder",
+			"underminer": "Hexer",
+			"bard": "Bard",
+			"blessing": "Abjurer",
+			"summoner": "Summoner",
+			"craftsman": "Artificer",
+			"ritualist": "Ritualist"
+		}
+	},
+	"SPECIAL": {
+		"name": "specialist",
+		"subProfs": {
+			"executor": "Executor",
+			"pusher": "Push Stroker",
+			"stalker": "Ambusher",
+			"hookmaster": "Hookmaster",
+			"geek": "Geek",
+			"merchant": "Merchant",
+			"traper": "Trapmaster",
+			"dollkeeper": "Dollkeeper",
+			"alchemist": "Alchemist",
+			"skywalker": "Skyranger"
+		}
+	}
 }

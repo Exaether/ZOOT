@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { fexli_url, puppiz_url } from "$lib/consts";
 	import professions from "$lib/data/professions.json";
 
 	let { operator } = $props();
@@ -7,41 +8,41 @@
 		rarity = 1;
 	}
 
-	let prof = professions[operator.profession];
+	let prof = professions[operator.profession].name;
 </script>
 
 
 <div class="card">
 	<img class="layer bg" 
-		src="https://raw.githubusercontent.com/PuppiizSunniiz/Arknight-Images/refs/heads/main/ui/chara/bg-{ rarity }.png" 
+		src="{ puppiz_url }/ui/chara/bg-{ rarity }.png" 
 		alt="BG">
 	<img class="layer portrait" 
-		src="https://raw.githubusercontent.com/fexli/ArknightsResource/refs/heads/main/charpor/{ operator.id }_1.png" 
+		src="{ fexli_url }/charpor/{ operator.id }_1.png" 
 		alt="portrait">
 	<img class="layer bg2" 
-		src="https://raw.githubusercontent.com/PuppiizSunniiz/Arknight-Images/refs/heads/main/ui/chara/bg.png" 
+		src="{ puppiz_url }/ui/chara/bg.png" 
 		alt="BG">
 	<img class="layer header" 
-		src="https://raw.githubusercontent.com/PuppiizSunniiz/Arknight-Images/refs/heads/main/ui/chara/header-{ rarity }.png" 
+		src="{ puppiz_url }/ui/chara/header-{ rarity }.png" 
 		alt="header">
 	<img class="layer glow" 
-		src="https://raw.githubusercontent.com/PuppiizSunniiz/Arknight-Images/refs/heads/main/ui/chara/glow-{ operator.rarity }.png" 
+		src="{ puppiz_url }/ui/chara/glow-{ operator.rarity }.png" 
 		alt="glow">
 	<img class="layer banner" 
-		src="https://raw.githubusercontent.com/PuppiizSunniiz/Arknight-Images/refs/heads/main/ui/chara/banner-{ rarity }.png" 
+		src="{ puppiz_url }/ui/chara/banner-{ rarity }.png" 
 		alt="banner">
 	<div class="layer subClass" >
 		<img 
-			src="https://raw.githubusercontent.com/PuppiizSunniiz/Arknight-Images/refs/heads/main/ui/subclass/sub_{ operator.subProfession }_icon.png" 
+			src="{ puppiz_url }/ui/subclass/sub_{ operator.subProfession }_icon.png" 
 			alt="subclass">
 	</div>
 	<img class="layer class" 
-		src="https://raw.githubusercontent.com/PuppiizSunniiz/Arknight-Images/refs/heads/main/classes/black/icon_profession_{ prof }_large.png" 
+		src="{ puppiz_url }/classes/black/icon_profession_{ prof }_large.png" 
 		alt="class">
 	{#each {length : operator.rarity}, i}
 		<img class="layer star" 
 			style="left: {24 + i * 9}%"
-			src="https://raw.githubusercontent.com/PuppiizSunniiz/Arknight-Images/refs/heads/main/ui/star.png" 
+			src="{ puppiz_url }/ui/star.png" 
 			alt="star">
 	{/each}
 	<h3 class="layer name">{ operator.name }</h3>

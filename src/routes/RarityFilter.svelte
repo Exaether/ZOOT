@@ -1,5 +1,4 @@
 <script lang="ts">
-	import star from "$lib/assets/star.svg"
 	let { rarityFilter = $bindable() } = $props();
 	let selectedRarity: number = $state(0);
 	let hoverRarity: number = $state(0);
