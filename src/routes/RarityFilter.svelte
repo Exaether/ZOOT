@@ -55,6 +55,8 @@
 	height: 80%;
 	position: absolute;
 	right: 12%;
+	display: flex;
+	align-items: center;
 }
 
 
@@ -67,7 +69,7 @@ button {
 }
 
 .reset {
-	height: 100%;
+	height: 75%;
 	fill: hsl(0, 0%, 50%);
 	transition: fill .2s;
 }
