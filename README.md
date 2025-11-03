@@ -24,10 +24,11 @@ This is meant to help doctors choose what operator, skill and module they should
 
 Do keep in mind that ZOOT assumes the doctor's brain is composed of more than 2 originium slugs. 
 At least enough to understand that a seemingly higher line doesn't always means better everywhere.  
+My goal by creating this tool is *not* to make some operators *look* objectively better than other, but rather to show who is better **depending on what you want**.
 
 ## What ZOOT Isn't?
 ZOOT isn't a skin viewer, it does display skins, but isn't meant for that.
-To do that, please go check [HermitzPlanner](https://hermitzplanner.github.io/skins/#).
+To do that, please go check [HermitzPlanner](https://hermitzplanner.github.io/skins/#).  
 ZOOT isn't a planner, it only displays what relates to the performance of operators, not their upgrade cost.
 To do that, please go check [Krooster](https://www.krooster.com/) and [Penguin Stats](https://penguin-stats.io/)
 
@@ -45,7 +46,7 @@ But obviously, the don't own this data, and neither do I, all data belongs to Hy
 After cloning the repo and installing dependencies with `npm install`, you can run the server with `npm run dev`.  
 The production version can be built with `npm run build`.  
 Note that i'm running ZOOT on the same server as Slumber Bridge. 
-If you're not running your own instance of Slumber Bridge, you'll need to change its adress from localhost to my public adress (Which I don't have yet).
+If you're not running your own instance of Slumber Bridge, you'll need to change its adress from localhost to my public adress (Which I don't have yet). This can be ddone in the `src/lib/consts.js` file.
 
 
 # What will ZOOT become?

@@ -12,16 +12,14 @@
 </script>
 
 
-<div class="card">
+<a href="/operators/{ operator.id }" class="card">
 	<img class="layer bg" 
 		src="{ puppiz_url }/ui/chara/bg-{ rarity }.png" 
 		alt="BG">
 	<img class="layer portrait" 
 		src="{ fexli_url }/charpor/{ operator.id }_1.png" 
 		alt="portrait">
-	<img class="layer bg2" 
-		src="{ puppiz_url }/ui/chara/bg.png" 
-		alt="BG">
+	<div class="layer bg2"></div>
 	<img class="layer header" 
 		src="{ puppiz_url }/ui/chara/header-{ rarity }.png" 
 		alt="header">
@@ -46,7 +44,7 @@
 			alt="star">
 	{/each}
 	<h3 class="layer name">{ operator.name }</h3>
-</div>
+</a>
 
 <style>
 .card {
@@ -54,6 +52,7 @@
 	position: relative;
 	width: 12.5%;
 	aspect-ratio: 1 / 2;
+	transition: transform .2s;
 
 	.layer {
 		position: absolute;
@@ -65,6 +64,8 @@
 	}
 	.bg2 {
 		bottom: 0;
+		height: 10%;
+		background-color: hsl(0, 0%, 30%);
 	}
 	.glow {
 		bottom: 10%;
@@ -106,5 +107,9 @@
 		color: white;
 		text-align: right;
 	}
+}
+
+.card:hover {
+	transform: scale(1.05);
 }
 </style>

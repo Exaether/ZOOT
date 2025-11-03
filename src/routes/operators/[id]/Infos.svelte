@@ -1,0 +1,199 @@
+<script lang="ts">
+    import { puppiz_url } from "$lib/consts";
+	import professions from "$lib/data/professions.json";
+
+	let { op, trait, talents, selectedPhase } = $props();
+	let traitDesc: string = $derived(getTraitDesc(selectedPhase))
+
+	function getTalentDesc(talent: { candidates: any[]; }, phase: number): string {
+		let desc = "";
+		let blackboard = {};
+		let candidate = talent.candidates.findLast((c: { unlockPhase: any; }) => c.unlockPhase <= phase );
+		if (candidate != undefined) {
+			desc = candidate.description;
+			blackboard = candidate.blackboard;
+		}
+		
+		desc = parseDesc(desc, blackboard);
+
+		return desc;
+
+	}
+
+	function getTraitDesc(phase: number): string {
+		let desc = trait.description;
+		let blackboard = {};
+		let candidate = trait.candidates.findLast((c: { unlockPhase: any; }) => c.unlockPhase <= phase );
+		if (candidate != undefined) {
+			if (candidate.overrideDescription) {
+				desc = candidate.overrideDescription;
+			}
+			blackboard = candidate.blackboard;
+		}
+		
+		desc = parseDesc(desc, blackboard);
+
+		return desc;
+	}
+
+	function parseDesc(str: string, blackboard: { [x: string]: any; }) {
+		return str.replace(/<[@$]([\w.]+)>\{?([^}<]+)\}?<\/>/g, (match, tag, key) => {
+			// Value lookup, with optional formatting
+			const [bbKey, format] = key.split(':');
+			let value = blackboard[bbKey];
+
+			if (value === undefined) value = bbKey;
+
+			// Handle formatting (like ":0%")
+			if (format?.endsWith('%')) {
+				const decimals = parseInt(format) || 0;
+				value = (value * 100).toFixed(decimals) + '%';
+			}
+
+			return `<span class="${tag.replaceAll(".", " ")}">${value}</span>`;
+		});
+	}
+
+</script>
+
+<section class="operator">
+	<section class="infos">
+		<h1>{ op.name }</h1>
+
+		<div class="stars">
+			{#each {length: op.rarity}, i}
+			<svg 
+				style:left={ -i * 1.1 }em
+				fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+				<g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M16 4.588l2.833 8.719H28l-7.416 5.387 2.832 8.719L16 22.023l-7.417 5.389 2.833-8.719L4 13.307h9.167L16 4.588z"></path></g>
+			</svg>
+			{/each}
+		</div>
+
+		<div class="classBox">
+			<img class="class" 
+				src="{ puppiz_url }/classes/black/icon_profession_{ professions[op.profession].name }_large.png" 
+				alt="class">
+			<div class="subClass" >
+				<img 
+					src="{ puppiz_url }/ui/subclass/sub_{ op.subProfession }_icon.png" 
+					alt="subclass">
+			</div>
+		</div>
+
+		<p class="trait">{@html traitDesc }</p>
+	</section>
+	<section class="talents">
+		{#each talents as talent}
+			<article class="talent">
+				<h2>{talent.name}</h2>
+				<p>{@html getTalentDesc(talent, selectedPhase) }</p>
+			</article>
+		{/each}
+	</section>
+</section>
+
+<style>
+.operator {
+	color: whitesmoke;
+	font-family: sans-serif;
+	height: 50%;
+	width: 50%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: hsla(0, 0%, 20%, 90%);
+	padding-left: 2em;
+	display: flex;
+	gap: 4em;
+}
+
+.infos {
+	background-color: hsl(0, 0%, 10%);
+	position: relative;
+	width: 45%;
+	height: 100%;
+	padding: 1em;
+	box-sizing: border-box;
+	h1 {
+		font-size: 3.5em;
+		margin-top: 0;
+		margin-bottom: 0;
+		margin-right: 5%;
+	}
+}
+
+.stars {
+	svg {
+		position: relative;
+		fill: hsl(50, 100%, 45%);
+		transform: rotate(15deg);
+		width: 3.5em;
+	}
+}
+
+.classBox {
+	position: absolute;
+	top: 1em;
+	right: -8%;
+	width: 16%;
+}
+
+.class {
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	margin-bottom: 5%;
+}
+
+.subClass {
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	background-color: black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	img {
+		width: 95%;
+		height: 95%;
+		object-fit: contain;
+	}
+}
+
+.trait {
+	margin-top: 3em;
+	font-size: 1em;
+	line-height: 2em;
+	padding: 1em;
+	background-color: hsl(0, 0%, 30%);
+}
+
+:global(.kw) {
+	background-color: hsl(0, 0%, 20%);
+	padding: .15em;
+	border-radius: .3em;
+	color: hsl(200, 100%, 50%);
+}
+
+.talents {
+	padding-top: 1em;
+	width: 45%;
+	display: flex;
+	flex-direction: column;
+	gap: 5%;
+	article {
+		border: 3px solid hsl(0, 0%, 10%);
+		border-radius: 3px;
+
+		h2 {
+			margin: 0;
+			width: 100%;
+			background-color: hsl(0, 0%, 10%);
+		}
+		p {
+			margin: 1em;
+			padding: 0;
+		}
+	}
+}
+
+</style>

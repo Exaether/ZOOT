@@ -1,6 +1,5 @@
 <script lang="ts">
 	import autoAnimate from '@formkit/auto-animate'
-	import searchIcon from "$lib/assets/search.svg"
 
     import Card from "./Card.svelte";
     import ClassFilter from "./ClassFilter.svelte";
@@ -32,21 +31,21 @@
 <style>
 .list {
 	width: 89.7%;
-	height: 92vh;
+	height: 92%;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 2%;
 	row-gap: 3%;
 	padding-inline: 1%;
-	margin-top: 1%;
+	padding-top: 1%;
 	align-content: flex-start;
 	justify-content: flex-start;
 	overflow-y: scroll;
 }
 
 .header {
-	height: 6vh;
-	width: 100vw;
+	height: 6%;
+	width: 100%;
 	background-color: black;
 	display: flex;
 	justify-content: center;

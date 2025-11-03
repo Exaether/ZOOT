@@ -1,6 +1,7 @@
 <script lang="ts">
 	import professions from "$lib/data/professions.json";
 	import { puppiz_url } from "$lib/consts";
+    import { slide } from "svelte/transition";
 
 	let { opFilter = $bindable() } = $props();
 
@@ -38,15 +39,19 @@
 	{/each}
 </div>
 {#each Object.keys(professions) as prof}
-	<div class="subClassFilter { selectedClass == prof ? "active" : ""}">
-		{#each Object.keys(professions[prof].subProfs) as sub}
-			<button 
-				class="filterButton {selectedSubClass == sub ? "activeFilter" : ""}" 
-				onclick="{() => setSubClassFilter(sub) }"> 
-				<img src="{ puppiz_url }/ui/subclass/sub_{ sub }_icon.png" alt="">
-			</button>
-		{/each}
-	</div>
+	{#if selectedClass == prof}
+		<div 
+			transition:slide={{ axis: "x", duration:200 }}
+			class="subClassFilter">
+			{#each Object.keys(professions[prof].subProfs) as sub}
+				<button 
+					class="filterButton {selectedSubClass == sub ? "activeFilter" : ""}" 
+					onclick="{() => setSubClassFilter(sub) }"> 
+					<img src="{ puppiz_url }/ui/subclass/sub_{ sub }_icon.png" alt="">
+				</button>
+			{/each}
+		</div>
+	{/if}
 {/each}
 
 <style>
@@ -73,6 +78,7 @@
 	color: white;
 	font-weight: bold;
 	font-size: 2em;
+	transition: filter .3s;
 }
 
 .filterButton img {
@@ -81,12 +87,8 @@
 
 .subClassFilter {
 	border-right: 5px solid hsl(200, 80%, 50%);
-	display: none;
-	right: 4% }
-
-.subClassFilter.active {
 	display: flex;
-}
+	right: 4% }
 
 .activeFilter {
 	filter: invert(50%) sepia(70%) saturate(690%) hue-rotate(159deg) brightness(93%) contrast(94%);

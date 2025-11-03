@@ -36,6 +36,7 @@
 	</button>
 	{#each {length: 6} as _, i}
 		<button
+			style:left= {-i * 0.9}em
 			onclick="{() => filterRarity(i + 1) }"
 			onmouseenter={() => hoverRarity = i + 1}
 			onmouseleave={() => hoverRarity = 0}
@@ -61,6 +62,7 @@
 
 
 button {
+	position: relative;
 	background: none;
 	border: none;
 	height: 100%;
@@ -79,6 +81,7 @@ button {
 }
 
 .star {
+	transform: rotate(15deg);
 	height: 100%;
 	transition: fill .5s;
 }
