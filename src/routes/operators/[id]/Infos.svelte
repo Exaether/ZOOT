@@ -102,7 +102,8 @@
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	background-color: hsla(0, 0%, 20%, 90%);
+	background-color: hsla(0, 0%, 20%, 97%);
+	box-sizing: border-box;
 	padding-left: 2em;
 	display: flex;
 	gap: 4em;
@@ -114,7 +115,6 @@
 	width: 45%;
 	height: 100%;
 	padding: 1em;
-	box-sizing: border-box;
 	h1 {
 		font-size: 3.5em;
 		margin-top: 0;
