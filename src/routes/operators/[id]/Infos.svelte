@@ -56,7 +56,7 @@
 
 </script>
 
-<section class="operator">
+<section id="operator">
 	<section class="infos">
 		<h1>{ op.name }</h1>
 
@@ -94,7 +94,7 @@
 </section>
 
 <style>
-.operator {
+#operator {
 	color: whitesmoke;
 	font-family: sans-serif;
 	height: 50%;
@@ -112,9 +112,10 @@
 .infos {
 	background-color: hsl(0, 0%, 10%);
 	position: relative;
-	width: 45%;
+	width: 47%;
 	height: 100%;
 	padding: 1em;
+	box-sizing: border-box;
 	h1 {
 		font-size: 3.5em;
 		margin-top: 0;

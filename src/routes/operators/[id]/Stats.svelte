@@ -6,7 +6,7 @@
 </script>
 
 
-<section class="attributes">
+<section id="attributes">
 	<div class="phase-select">
 		{#each op.phases as p}
 			<input type="radio"
@@ -30,22 +30,22 @@
 		<div><h4>ATK: </h4><p>{attributes.atk}</p></div>
 		<div><h4>DEF: </h4><p>{attributes.def}</p></div>
 		<div><h4>RES: </h4><p>{attributes.res}</p></div>
-		<div><h4>Redeployment time: </h4><p>{attributes.respawnTime}</p></div>
+		<div><h4>Redeployment time: </h4><p>{attributes.respawnTime}s</p></div>
 		<div><h4>DP cost: </h4><p>{attributes.cost}</p></div>
 		<div><h4>Block: </h4><p>{attributes.block}</p></div>
-		<div><h4>Attack interval: </h4><p>{attributes.baseAttackTime}</p></div>
+		<div><h4>Attack interval: </h4><p>{attributes.baseAttackTime}s</p></div>
 
 	</section>
 </section>
 
 <style>
-.attributes {
+#attributes {
 	color: whitesmoke;
 	font-family: sans-serif;
-	height: 50%;
+	height: 46%;
 	width: 50%;
 	position: absolute;
-	top: 0;
+	top: 4%;
 	right: 0;
 	background-color: hsla(0, 0%, 20%, 97%);
 	display: flex;
@@ -58,7 +58,7 @@
 
 .phase-select {
 	display: flex;
-	flex-direction: column;
+	flex-direction: column-reverse;
 	width: 7%;
 	border-radius: 15px;
 	background-color: hsl(0, 0%, 10%);
@@ -112,7 +112,7 @@
 
 .stats {
 	width: 80%;
-	height: 30%;
+	height: 40%;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 2%;
@@ -131,7 +131,7 @@
 			margin: 0;
 			width: 100%;
 			background-color: hsl(0, 0%, 10%);
-			font-size: 1.1em;
+			font-size: 1.3em;
 		}
 		p {
 			flex: 1;
@@ -141,7 +141,7 @@
 			margin: 0;
 			padding: 0;
 			vertical-align: middle;
-			font-size: 1.1em;
+			font-size: 1.3em;
 			font-weight: bold;
 		}
 	}
