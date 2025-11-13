@@ -1,14 +1,43 @@
 <script lang="ts">
     import { puppiz_url } from "$lib/consts";
 
-	let { op, selectedPhase = $bindable(), currentLevel = $bindable(), attributes, maxLevel} = $props();
+	let {phases, selectedPhase = $bindable(), attributes = $bindable()} = $props();
+
+	// variables
+
+	selectedPhase = phases.length - 1;
+	let maxLevel = $derived(phases[selectedPhase].maxLevel);
+	let currentLevel = $derived(Math.min(maxLevel, phases[phases.length - 1].maxLevel));
+	attributes = calculate_stats(phases[selectedPhase], 1)
+
+	$effect(() => {
+		attributes = calculate_stats(phases[selectedPhase], currentLevel)
+	})
+
+	function calculate_stats(phase: { maxLevel: number; minStats: any; maxStats: any; }, level: number) {
+		let levelfactor = level / phase.maxLevel;
+		let minStats = phase.minStats;
+		let maxStats = phase.maxStats;
+
+		return {
+			"maxHP": Math.round(minStats.maxHP + (maxStats.maxHP - minStats.maxHP) * levelfactor),
+			"atk": Math.round(minStats.atk + (maxStats.atk - minStats.atk) * levelfactor),
+			"def": Math.round(minStats.def + (maxStats.def - minStats.def) * levelfactor),
+			"res": Math.round(minStats.res + (maxStats.res - minStats.res) * levelfactor),
+			"cost": minStats.cost,
+			"baseAttackTime": minStats.baseAttackTime,
+			"respawnTime": minStats.respawnTime,
+			"block": minStats.block,
+			"taunt": minStats.taunt
+		}
+	}
 
 </script>
 
 
 <section id="attributes">
 	<div class="phase-select">
-		{#each op.phases as p}
+		{#each {length: phases.length}, p}
 			<input type="radio"
 				name="phases"
 				id="phase{p}"
@@ -42,11 +71,8 @@
 #attributes {
 	color: whitesmoke;
 	font-family: sans-serif;
-	height: 46%;
-	width: 50%;
-	position: absolute;
-	top: 4%;
-	right: 0;
+	height: 92%;
+	width: 100%;
 	background-color: hsla(0, 0%, 20%, 97%);
 	display: flex;
 	align-items: center;

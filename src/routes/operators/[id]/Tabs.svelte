@@ -26,13 +26,8 @@ const handleClick = tabValue => () => (activeTabValue = tabValue);
 
 <style>
 ul {
-	position: absolute;
-	top: var(--top, 0);
-	left: var(--left, 0);
-	bottom: var(--bottom, none);
-	right: var(--right, none);
-	width: 50%;
-	height: 4%;
+	width: 100%;
+	height: 8%;
 	display: flex;
 	flex-wrap: wrap;
 	padding-left: 0;
