@@ -33,7 +33,8 @@ ul {
 	padding-left: 0;
 	margin: 0;
 	list-style: none;
-	background-color: hsla(0, 0%, 10%, 97%);
+	border-top: 1px solid black;
+	box-sizing: border-box;
 }
 
 span {
@@ -45,12 +46,17 @@ span {
 	color: whitesmoke;
 	font-weight: bold;
 	font-size: 1.8em;
-	background-color: hsla(0, 0%, 17%, 97%);
+	background-color: hsla(0, 0%, 13%, 97%);
 	transition: background-color .3s;
 }
 
 span:hover {
 	background-color: hsla(0, 0%, 20%, 97%);
+}
+
+li {
+	flex-grow: 1;
+	text-align: center;
 }
 
 li.active > span {

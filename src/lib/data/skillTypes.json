@@ -1,0 +1,28 @@
+{
+	"SPTypesNames": {
+		"INCREASE_WITH_TIME": "Auto",
+		"INCREASE_WHEN_TAKEN_DAMAGE": "Defensive",
+		"INCREASE_WHEN_ATTACK": "Offensive",
+		"8": "Passive"
+	},
+	"SPTypesColors": {
+		"INCREASE_WITH_TIME": "hsl(100, 80%, 45%)",
+		"INCREASE_WHEN_TAKEN_DAMAGE": "hsl(50, 80%, 50%)",
+		"INCREASE_WHEN_ATTACK": "hsl(20, 80%, 50%)",
+		"8": "grey"
+	},
+	"SkillTypesColors": {
+		"AUTO": "hsl(100, 80%, 45%)",
+		"MANUAL": "hsl(20, 80%, 50%)",
+		"PASSIVE": "grey"
+	},
+	"DurationTypesColor": {
+		"-1": "hsl(20, 80%, 50%)",
+		"0": "hsl(5, 80%, 40%)"
+	},
+	"DurationTypesNames": {
+		"-1": "Infinite",
+		"0": "Instant attack"
+	}
+	
+}

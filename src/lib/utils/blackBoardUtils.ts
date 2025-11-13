@@ -13,5 +13,6 @@ export function parseDesc(str: string, blackboard: { [x: string]: any; }) {
 				value = (value * 100).toFixed(decimals) + '%';
 			}
 			return value
-		}).replaceAll(/<\/>/g, "</span>");
+		}).replaceAll("</>", "</span>")
+		.replaceAll("\n", "<br>");
 }

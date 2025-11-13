@@ -1,5 +1,6 @@
 <script lang="ts">
     import { puppiz_url } from "$lib/consts";
+	import skillTypes from "$lib/data/skillTypes.json"
     import { parseDesc } from "$lib/utils/blackBoardUtils";
     import Tabs from "./Tabs.svelte";
 
@@ -9,15 +10,17 @@
 	let tabItems = skills.map((sk: { name: any; id: any; }, index: number) => {
 		return {label: sk.name, value: index}
 	})
-	let currentTab = $state(0);
+	let currentSkill = $state(0);
 
 	let maxSkillLevel = skills[0].levels.length
 	let skillLevel = $state(maxSkillLevel)
 	updateSelectedSkill(0, 1)
 
 	$effect(() => {
-		updateSelectedSkill(currentTab, skillLevel)
+		updateSelectedSkill(currentSkill, skillLevel)
 	});
+	console.log(parseDesc(selectedSkill.description, selectedSkill.blackboard));
+	
 
 	function updateSelectedSkill(skillNumber: number, level: number): void {
 		level = level-1
@@ -37,29 +40,48 @@
 			blackboard: skills[skillNumber].levels[level].blackboard
 		}
 	}
-	
-
 
 </script>
 
 <section id="skills">
-<Tabs bind:activeTabValue={currentTab} items={tabItems} />
-	{#each skills as sk, index}
-		{#if index === currentTab}
-			<section class="skill">
-				<div id="levelSelect">
-					<div class="imagebox">
-						<img src="{puppiz_url}/ui/rank/{Math.min(7, skillLevel)}.png" alt="level">
-						{#if skillLevel >= 7}
-							<img src="{puppiz_url}/ui/rank/m-{skillLevel - 7}.png" alt="level">
-						{/if}
-					</div>
-					<input type="range" bind:value={skillLevel} min="1" max="{maxSkillLevel}">
-				</div>
-				<p class="description">{@html parseDesc(selectedSkill.description, selectedSkill.blackboard)}</p>
-			</section>
-		{/if}
-	{/each}
+<Tabs bind:activeTabValue={currentSkill} items={tabItems} />
+	<section class="skill">
+		<div id="levelSelect">
+			<div class="imagebox">
+				<img src="{puppiz_url}/ui/rank/{Math.min(7, skillLevel)}.png" alt="level">
+				{#if skillLevel >= 7}
+					<img src="{puppiz_url}/ui/rank/m-{skillLevel - 7}.png" alt="level">
+				{/if}
+			</div>
+			<input type="range" bind:value={skillLevel} min="1" max="{maxSkillLevel}">
+		</div>
+		<article class="skillDetail">
+			<img src="{puppiz_url}/skills/skill_icon_{selectedSkill.id}.png" alt="skill icon">
+			<div class="metadata">
+				<p style:--color={skillTypes.SPTypesColors[selectedSkill.spType]}>
+					<span class="title">Recovery</span>
+					{skillTypes.SPTypesNames[selectedSkill.spType]}</p>
+
+				<p style:--color={skillTypes.SkillTypesColors[selectedSkill.skillType]}>
+					<span class="title">Activation</span>
+					{selectedSkill.skillType.toLowerCase()}</p>
+
+				<p style:--color={skillTypes.DurationTypesColor[selectedSkill.duration]}>
+					<span class="title">Duration</span>
+					{skillTypes.DurationTypesNames[selectedSkill.duration] ?? selectedSkill.duration+ "s"}</p>
+
+				<p>
+					<span class="title">SP cost</span>
+					{selectedSkill.spCost}</p>
+
+				<p>
+					<span class="title">Starting SP</span>
+					{selectedSkill.initSp}</p>
+
+			</div>
+			<p class="description">{@html parseDesc(selectedSkill.description, selectedSkill.blackboard)}</p>
+		</article>
+	</section>
 
 </section>
 
@@ -82,10 +104,6 @@
 	gap: 3%;
 	padding-left: 1em;
 	box-sizing: border-box;
-	
-	.description {
-		width: 80%;
-	}
 }
 
 #levelSelect {
@@ -120,6 +138,53 @@
 
 :global(.vdown) {
 	color: hsl(20, 100%, 50%);
+}
+
+:global(.rem) {
+	color: hsl(40, 100%, 50%);
+}
+
+article.skillDetail {
+	position: relative;
+	background-color: hsl(0, 0%, 30%);
+	padding: 1em;
+	padding-top: 3em;
+	box-sizing: border-box;
+	width: 85%;
+	img {
+		position: absolute;
+		top: -3em;
+		height: 6em;
+	}
+	p.description {
+		width: 100%;
+	}
+	.metadata {
+		display: flex;
+		gap: 1em;
+		position: absolute;
+		top: -2em;
+		height: 4.5em;
+		left: 8em;
+		width: 80%;
+		p {
+			position: relative;
+			flex-grow: 1;
+			padding: .5em;
+			background-color: var(--color, hsl(0, 0%, 45%));
+			color: black;
+			text-transform: capitalize;
+		}
+		.title {
+			color: whitesmoke;
+			position: absolute;
+			top: -1em;
+			left: 0;
+			background-color: hsl(0, 0%, 15%);
+			padding: .2em;
+			font-size: .7em;
+		}
+	}
 }
 
 </style>

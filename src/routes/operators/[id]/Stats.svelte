@@ -1,10 +1,10 @@
 <script lang="ts">
     import { puppiz_url } from "$lib/consts";
+    import { onMount } from "svelte";
 
 	let {phases, selectedPhase = $bindable(), attributes = $bindable()} = $props();
 
 	// variables
-
 	selectedPhase = phases.length - 1;
 	let maxLevel = $derived(phases[selectedPhase].maxLevel);
 	let currentLevel = $derived(Math.min(maxLevel, phases[phases.length - 1].maxLevel));

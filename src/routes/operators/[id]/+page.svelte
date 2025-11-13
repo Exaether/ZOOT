@@ -35,12 +35,12 @@
 <Infos {op} {trait} {talents} {selectedPhase}/>
 <section id="selector">
 	<Tabs bind:activeTabValue={currentTab} items={tabItems} />
-	{#if 1 === currentTab}
+	<span hidden={currentTab !== 1}>
 		<Stats {phases} bind:selectedPhase bind:attributes/>
-	{/if}
-	{#if 2 === currentTab}
+	</span>
+	<span hidden={currentTab !== 2}>
 		<Skills {skills} bind:selectedSkill/>
-	{/if}
+	</span>
 </section>
 
 <Graphs/>
