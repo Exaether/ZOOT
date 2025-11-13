@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Range from "$lib/components/Range.svelte";
     import { puppiz_url } from "$lib/consts";
 	import skillTypes from "$lib/data/skillTypes.json"
     import { parseDesc } from "$lib/utils/blackBoardUtils";
@@ -8,7 +9,7 @@
 
 	// tabs
 	let tabItems = skills.map((sk: { name: any; id: any; }, index: number) => {
-		return {label: sk.name, value: index}
+		return {label: `Skill ${index+1}`, value: index}
 	})
 	let currentSkill = $state(0);
 
@@ -19,7 +20,6 @@
 	$effect(() => {
 		updateSelectedSkill(currentSkill, skillLevel)
 	});
-	console.log(parseDesc(selectedSkill.description, selectedSkill.blackboard));
 	
 
 	function updateSelectedSkill(skillNumber: number, level: number): void {
@@ -79,7 +79,11 @@
 					{selectedSkill.initSp}</p>
 
 			</div>
+			<h3>{selectedSkill.name}</h3>
 			<p class="description">{@html parseDesc(selectedSkill.description, selectedSkill.blackboard)}</p>
+			{#if selectedSkill.range}
+				<Range rangeId={selectedSkill.range}/>
+			{/if}
 		</article>
 	</section>
 

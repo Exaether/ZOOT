@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Range from "$lib/components/Range.svelte";
     import { puppiz_url } from "$lib/consts";
     import { onMount } from "svelte";
 
@@ -14,12 +15,15 @@
 		attributes = calculate_stats(phases[selectedPhase], currentLevel)
 	})
 
-	function calculate_stats(phase: { maxLevel: number; minStats: any; maxStats: any; }, level: number) {
+	function calculate_stats(phase: {
+        range: any; maxLevel: number; minStats: any; maxStats: any; 
+}, level: number) {
 		let levelfactor = level / phase.maxLevel;
 		let minStats = phase.minStats;
 		let maxStats = phase.maxStats;
 
 		return {
+			"range": phase.range,
 			"maxHP": Math.round(minStats.maxHP + (maxStats.maxHP - minStats.maxHP) * levelfactor),
 			"atk": Math.round(minStats.atk + (maxStats.atk - minStats.atk) * levelfactor),
 			"def": Math.round(minStats.def + (maxStats.def - minStats.def) * levelfactor),
@@ -55,14 +59,15 @@
 	</div>
 	<section class="stats">
 		
-		<div><h4>Max HP: </h4><p>{attributes.maxHP}</p></div>
-		<div><h4>ATK: </h4><p>{attributes.atk}</p></div>
-		<div><h4>DEF: </h4><p>{attributes.def}</p></div>
-		<div><h4>RES: </h4><p>{attributes.res}</p></div>
-		<div><h4>Redeployment time: </h4><p>{attributes.respawnTime}s</p></div>
-		<div><h4>DP cost: </h4><p>{attributes.cost}</p></div>
-		<div><h4>Block: </h4><p>{attributes.block}</p></div>
-		<div><h4>Attack interval: </h4><p>{attributes.baseAttackTime}s</p></div>
+		<div><h4>Max HP</h4><p>{attributes.maxHP}</p></div>
+		<div><h4>ATK</h4><p>{attributes.atk}</p></div>
+		<div><h4>DEF</h4><p>{attributes.def}</p></div>
+		<div><h4>RES</h4><p>{attributes.res}</p></div>
+		<div><h4>Redeployment time</h4><p>{attributes.respawnTime}s</p></div>
+		<div><h4>DP cost</h4><p>{attributes.cost}</p></div>
+		<div><h4>Block</h4><p>{attributes.block}</p></div>
+		<div><h4>Attack interval</h4><p>{attributes.baseAttackTime}s</p></div>
+		<div><h4>Range</h4><p> <Range rangeId={attributes.range}/> </p></div>
 
 	</section>
 </section>
@@ -138,10 +143,10 @@
 
 .stats {
 	width: 80%;
-	height: 40%;
+	height: 100%;
 	display: flex;
 	flex-wrap: wrap;
-	gap: 2%;
+	gap: .5em;
 	align-items: center;
 	justify-content: center;
 	div {
@@ -150,7 +155,6 @@
 		border: 3px solid hsl(0, 0%, 10%);
 		border-radius: 3px;
 		text-align: center;
-		height: 45%;
 		width: 20%;
 
 		h4 {
@@ -164,7 +168,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			margin: 0;
+			margin: .1em;
 			padding: 0;
 			vertical-align: middle;
 			font-size: 1.3em;
