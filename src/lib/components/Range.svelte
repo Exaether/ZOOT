@@ -3,11 +3,11 @@ import ranges from "$lib/data/ranges.json"
 
 let {rangeId} = $props()
 
-const range = ranges[rangeId].grids
-const minRow = Math.min(...range.map(c => c.row));
-const maxRow = Math.max(...range.map(c => c.row));
-const minCol = Math.min(...range.map(c => c.col));
-const maxCol = Math.max(...range.map(c => c.col));
+const range = $derived(ranges[rangeId].grids)
+const minRow = $derived(Math.min(...range.map(c => c.row)));
+const maxRow = $derived(Math.max(...range.map(c => c.row)));
+const minCol = $derived(Math.min(...range.map(c => c.col)));
+const maxCol = $derived(Math.max(...range.map(c => c.col)));
 
 function isInRange(r: number, c: number) {
     return range.some((cell: { row: number; col: number; }) => cell.row === r && cell.col === c);
