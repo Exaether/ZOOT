@@ -29,6 +29,10 @@
 	let currentTab = $state(1);
 </script>
 
+<svelte:head>
+	<title>ZOOT: {op.name}</title>
+</svelte:head>
+
 <section class="image">
 	<img src="{ puppiz_url }/characters/{ op.skins[0] }.png" alt="">
 </section>

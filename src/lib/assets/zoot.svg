@@ -10,9 +10,45 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs1" />
+     id="defs1">
+    <meshgradient
+       id="meshgradient15"
+       gradientUnits="userSpaceOnUse"
+       x="-2.220446e-16"
+       y="-4.4408921e-16">
+      <meshrow
+         id="meshrow15">
+        <meshpatch
+           id="meshpatch15">
+          <stop
+             path="c 66.6667,0  133.333,0  200,0"
+             style="stop-color:#ffffff;stop-opacity:1"
+             id="stop16" />
+          <stop
+             path="c 0,66.6667  0,133.333  0,200"
+             style="stop-color:#808080;stop-opacity:1"
+             id="stop17" />
+          <stop
+             path="c -66.6667,0  -133.333,0  -200,0"
+             style="stop-color:#ffffff;stop-opacity:1"
+             id="stop18" />
+          <stop
+             path="c 0,-66.6667  0,-133.333  0,-200"
+             style="stop-color:#808080;stop-opacity:1"
+             id="stop19" />
+        </meshpatch>
+      </meshrow>
+    </meshgradient>
+  </defs>
   <g
      id="layer1">
+    <rect
+       style="fill:url(#meshgradient15);fill-opacity:1;stroke:#868686;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:0;paint-order:normal"
+       id="rect14"
+       width="200"
+       height="200"
+       x="-2.220446e-16"
+       y="-4.4408921e-16" />
     <text
        xml:space="preserve"
        style="font-size:126.891px;text-align:start;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:6.49718;stroke-dasharray:none;stroke-opacity:1"
