@@ -1,5 +1,7 @@
 # ZOOT
 
+[https://exaether.org](https://exaether.org)
+
 ZOOT is a database of all available operators.  
 Yes, I know, there is already other tools that does that, so why am I recreating it?  
 Because I wanted my Terminal System to not be Primitive, and rather be an Oil Tank.
@@ -46,7 +48,7 @@ But obviously, the don't own this data, and neither do I, all data belongs to Hy
 After cloning the repo and installing dependencies with `npm install`, you can run the server with `npm run dev`.  
 The production version can be built with `npm run build`.  
 Note that i'm running ZOOT on the same server as Slumber Bridge. 
-If you're not running your own instance of Slumber Bridge, you'll need to change its adress from localhost to my public adress (Which I don't have yet). This can be ddone in the `src/lib/consts.js` file.
+You'll need to define the url where slumber bridge is in the `SLUMBER_URL` environment variable. You can do that either with a .env file or in a docker compose file for the prod build.
 
 
 # What will ZOOT become?
