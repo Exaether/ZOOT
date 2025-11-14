@@ -1,6 +1,7 @@
 <script lang="ts">
     import { fexli_url, puppiz_url } from "$lib/consts";
 	import professions from "$lib/data/professions.json";
+	import { lazyLoad } from '$lib/utils/lazyload'
 
 	let { operator } = $props();
 	let rarity: number = operator.rarity;
@@ -17,7 +18,7 @@
 		src="{ puppiz_url }/ui/chara/bg-{ rarity }.png" 
 		alt="BG">
 	<img class="layer portrait" 
-		src="{ fexli_url }/charpor/{ operator.id }_1.png" 
+		use:lazyLoad={`${fexli_url}/charpor/${operator.id}_1.png`}
 		alt="portrait">
 	<div class="layer bg2"></div>
 	<img class="layer header" 
