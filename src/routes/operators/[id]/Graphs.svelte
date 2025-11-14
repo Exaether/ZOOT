@@ -21,6 +21,12 @@
 	gap: 3%;
 	padding-left: 1%;
 	box-sizing: border-box;
-
+}
+@media (max-width: 600px) {
+	#graphs {
+		height: unset;
+		width: 100%;
+		position: static;
+	}
 }
 </style>

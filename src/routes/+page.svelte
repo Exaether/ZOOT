@@ -80,5 +80,27 @@
 	outline: none;
 }
 
+@media (max-width: 600px) {
+	.header {
+		height: 6vh;
+		width: 100vw;
+		justify-content: space-between;
+		gap: 2%;
+	}
+	.search {
+		width: 40%;
+	}
+	.search input {
+		width: 100%;
+		font-size: 1em;
+	}
+	.list {
+		width: 95vw;
+		gap: 7%;
+		row-gap: 3%;
+		padding-top: 15vh;
+		padding-left: 4%;
+	}
+}
 
 </style>

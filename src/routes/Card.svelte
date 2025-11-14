@@ -112,4 +112,10 @@
 .card:hover {
 	transform: scale(1.05);
 }
+
+@media (max-width: 600px) {
+	.card {
+		width: 45%;
+	}
+}
 </style>

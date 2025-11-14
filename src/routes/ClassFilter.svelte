@@ -87,10 +87,30 @@
 
 .subClassFilter {
 	border-right: 5px solid hsl(200, 80%, 50%);
-	display: flex;
 	right: 4% }
 
 .activeFilter {
 	filter: invert(50%) sepia(70%) saturate(690%) hue-rotate(159deg) brightness(93%) contrast(94%);
+}
+
+@media (max-width: 600px) {
+	.classFilter, .subClassFilter{
+		flex-direction: row;
+		height: 6vh;
+		width: 100vw;
+		top: 6vh;
+		left: 0;
+	}
+	.subClassFilter {
+		top: 12vh;
+		border-top: 5px solid hsl(200, 80%, 50%);
+		border-right: none;
+
+	}
+	.filterButton {
+		width: unset;
+		height: 90%;
+		font-size: 1.5em;
+	}
 }
 </style>

@@ -67,6 +67,7 @@
 		<p class="trait">{@html traitDesc }</p>
 	</section>
 	<section class="talents">
+		<h2>Talents</h2>
 		{#each talents as talent}
 			<article class="talent">
 				<h2>{talent.name}</h2>
@@ -177,6 +178,30 @@
 			margin: 1em;
 			padding: 0;
 		}
+	}
+}
+
+@media (max-width: 600px) {
+	#operator {
+		height: unset;
+		width: 100%;
+		position: static;
+		flex-direction: column;
+		gap: 1em;
+		align-items: center;
+		padding: 0;
+		padding-bottom: 1em;
+	}
+
+	.infos {
+		width: 85%;
+		height: unset;
+	}
+
+	.talents {
+		padding-top: 0;
+		width: 85%;
+		gap: 1em;
 	}
 }
 

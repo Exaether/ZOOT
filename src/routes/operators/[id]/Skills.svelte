@@ -172,12 +172,14 @@ article.skillDetail {
 		left: 8em;
 		width: 80%;
 		p {
+			margin: 0;
 			position: relative;
 			flex-grow: 1;
 			padding: .5em;
 			background-color: var(--color, hsl(0, 0%, 45%));
 			color: black;
 			text-transform: capitalize;
+			white-space: nowrap;
 		}
 		.title {
 			color: whitesmoke;
@@ -187,6 +189,44 @@ article.skillDetail {
 			background-color: hsl(0, 0%, 15%);
 			padding: .2em;
 			font-size: .7em;
+		}
+	}
+}
+
+@media (max-width: 600px) {
+	.skill {
+		flex-direction: column;
+		padding-bottom: 1em;
+		gap: 5em;
+	}
+
+	#levelSelect {
+		height: 4em;
+		width: 90%;
+		flex-direction: row-reverse;
+		justify-content: start;
+
+		div.imagebox {
+			height: 80%;
+			width: unset;
+			flex-direction: row;
+			img {
+				height: 100%;
+			}
+		}
+		input[type="range"] {
+			writing-mode: initial;
+			width: 70%;
+			height: 100%;
+		}
+	}
+
+	article.skillDetail {
+		width: 90%;
+		.metadata {
+			top: -3em;
+			flex-wrap: wrap;
+			width: 60%;
 		}
 	}
 }

@@ -113,5 +113,12 @@ button {
 .s6 {
 	fill: hsl(20, 100%, 50%)
 }
+
+@media (max-width: 600px) {
+	.filterBox {
+		height: 70%;
+		position: static;
+	}
+}
 </style>
 

@@ -69,4 +69,21 @@
 	right: 0;
 	box-sizing: content-box;
 }
+
+@media (max-width: 600px) {
+	.image {
+		width: 100%;
+		height: unset;
+		position: static;
+		img {
+			width: 100%;
+		}
+	}
+	#selector {
+		width: 100%;
+		height: unset;
+		position: static;
+	}
+}
+
 </style>

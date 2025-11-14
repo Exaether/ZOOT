@@ -1,7 +1,6 @@
 <script lang="ts">
     import Range from "$lib/components/Range.svelte";
     import { puppiz_url } from "$lib/consts";
-    import { onMount } from "svelte";
 
 	let {phases, selectedPhase = $bindable(), attributes = $bindable()} = $props();
 
@@ -135,10 +134,6 @@
 		writing-mode: sideways-lr;
 		height: 80%;
 	}
-	
-	input[type="range"] {
-
-	}
 }
 
 .stats {
@@ -177,5 +172,40 @@
 	}
 }
 
+@media (max-width: 600px) {
+	#attributes {
+		flex-direction: column;
+		gap: 1em;
+		padding-top: 1em;
+		height: unset;
+	}
+	.phase-select {
+		flex-direction: row;
+		width: 40%;
+		label {
+			width: 33.3%;
+		}
+	}
+	#levelSelect {
+		height: 2em;
+		width: 80%;
+		flex-direction: row-reverse;
+		input[type="number"] {
+			height: 100%;
+			width: unset;
+		}
+		input[type="range"] {
+			writing-mode: initial;
+			width: 80%;
+			height: 100%;
+		}
+	}
+	.stats {
+		width: 90%;
+		div {
+			width: 45%;
+		}
+	}
+}
 
 </style>
