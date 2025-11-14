@@ -1,11 +1,11 @@
 /** @type {import('./$types').PageServerLoad} */
-import { slumber_url } from "$lib/consts";
+import { env } from "$env/dynamic/private";
 import professions from "$lib/data/professions.json";
 
 
 export async function load({ params }) {
 	return {
-		operators: await fetch(slumber_url + "/operators")
+		operators: await fetch(env.SLUMBER_URL + "/operators")
 			.then(x => x.json())
 			.then(data => Object.values(data))
 		// sort by subclass

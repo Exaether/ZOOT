@@ -21,6 +21,7 @@
 		"vite": "^7.1.7"
 	},
 	"dependencies": {
-		"@formkit/auto-animate": "^0.9.0"
+		"@formkit/auto-animate": "^0.9.0",
+		"@sveltejs/adapter-node": "^5.4.0"
 	}
 }

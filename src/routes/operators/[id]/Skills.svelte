@@ -168,7 +168,7 @@ article.skillDetail {
 		gap: 1em;
 		position: absolute;
 		top: -2em;
-		height: 4.5em;
+		height: 2.5em;
 		left: 8em;
 		width: 80%;
 		p {

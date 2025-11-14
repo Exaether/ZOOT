@@ -18,7 +18,7 @@ const handleClick = tabValue => () => (activeTabValue = tabValue);
 	{#if Array.isArray(items)}
 		{#each items as item}
 			<li class={activeTabValue === item.value ? 'active' : ''}>
-				<span on:click={handleClick(item.value)}>{item.label}</span>
+				<a on:click={handleClick(item.value)}>{item.label}</a>
 			</li>
 		{/each}
 	{/if}
@@ -37,7 +37,7 @@ ul {
 	box-sizing: border-box;
 }
 
-span {
+a {
 	height: 100%;
 	display: block;
 	cursor: pointer;
@@ -50,7 +50,7 @@ span {
 	transition: background-color .3s;
 }
 
-span:hover {
+a:hover {
 	background-color: hsla(0, 0%, 20%, 97%);
 }
 
@@ -59,7 +59,7 @@ li {
 	text-align: center;
 }
 
-li.active > span {
+li.active > a {
 	background-color: hsla(0, 0%, 20%, 97%);
 }
 </style>
