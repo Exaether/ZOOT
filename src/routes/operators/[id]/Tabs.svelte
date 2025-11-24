@@ -35,6 +35,7 @@ ul {
 	list-style: none;
 	border-top: 1px solid black;
 	box-sizing: border-box;
+	background-color: hsla(0, 0%, 13%, 97%);
 }
 
 a {

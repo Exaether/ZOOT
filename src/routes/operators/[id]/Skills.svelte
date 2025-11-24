@@ -11,11 +11,14 @@
 	let tabItems = skills.map((sk: { name: any; id: any; }, index: number) => {
 		return {label: `Skill ${index+1}`, value: index}
 	})
+
 	let currentSkill = $state(0);
 
-	let maxSkillLevel = skills[0].levels.length
+	let maxSkillLevel = skills[0] ? skills[0].levels.length : 0
 	let skillLevel = $state(maxSkillLevel)
-	updateSelectedSkill(0, 1)
+	if (skills[0]) {
+		updateSelectedSkill(0, 1)
+	}
 
 	$effect(() => {
 		updateSelectedSkill(currentSkill, skillLevel)
@@ -44,47 +47,49 @@
 </script>
 
 <section id="skills">
-<Tabs bind:activeTabValue={currentSkill} items={tabItems} />
+	<Tabs bind:activeTabValue={currentSkill} items={tabItems} />
 	<section class="skill">
-		<div id="levelSelect">
-			<div class="imagebox">
-				<img src="{puppiz_url}/ui/rank/{Math.min(7, skillLevel)}.png" alt="level">
-				{#if skillLevel >= 7}
-					<img src="{puppiz_url}/ui/rank/m-{skillLevel - 7}.png" alt="level">
+		{#if skills[0]}
+			<div id="levelSelect">
+				<div class="imagebox">
+					<img src="{puppiz_url}/ui/rank/{Math.min(7, skillLevel)}.png" alt="level">
+					{#if skillLevel >= 7}
+						<img src="{puppiz_url}/ui/rank/m-{skillLevel - 7}.png" alt="level">
+					{/if}
+				</div>
+				<input type="range" bind:value={skillLevel} min="1" max="{maxSkillLevel}">
+			</div>
+			<article class="skillDetail">
+				<img src="{puppiz_url}/skills/skill_icon_{selectedSkill.id}.png" alt="skill icon">
+				<div class="metadata">
+					<p style:--color={skillTypes.SPTypesColors[selectedSkill.spType]}>
+						<span class="title">Recovery</span>
+						{skillTypes.SPTypesNames[selectedSkill.spType]}</p>
+
+					<p style:--color={skillTypes.SkillTypesColors[selectedSkill.skillType]}>
+						<span class="title">Activation</span>
+						{selectedSkill.skillType.toLowerCase()}</p>
+
+					<p style:--color={skillTypes.DurationTypesColor[selectedSkill.duration]}>
+						<span class="title">Duration</span>
+						{skillTypes.DurationTypesNames[selectedSkill.duration] ?? selectedSkill.duration+ "s"}</p>
+
+					<p>
+						<span class="title">SP cost</span>
+						{selectedSkill.spCost}</p>
+
+					<p>
+						<span class="title">Starting SP</span>
+						{selectedSkill.initSp}</p>
+
+				</div>
+				<h3>{selectedSkill.name}</h3>
+				<p class="description">{@html parseDesc(selectedSkill.description, selectedSkill.blackboard)}</p>
+				{#if selectedSkill.range}
+					<Range rangeId={selectedSkill.range}/>
 				{/if}
-			</div>
-			<input type="range" bind:value={skillLevel} min="1" max="{maxSkillLevel}">
-		</div>
-		<article class="skillDetail">
-			<img src="{puppiz_url}/skills/skill_icon_{selectedSkill.id}.png" alt="skill icon">
-			<div class="metadata">
-				<p style:--color={skillTypes.SPTypesColors[selectedSkill.spType]}>
-					<span class="title">Recovery</span>
-					{skillTypes.SPTypesNames[selectedSkill.spType]}</p>
-
-				<p style:--color={skillTypes.SkillTypesColors[selectedSkill.skillType]}>
-					<span class="title">Activation</span>
-					{selectedSkill.skillType.toLowerCase()}</p>
-
-				<p style:--color={skillTypes.DurationTypesColor[selectedSkill.duration]}>
-					<span class="title">Duration</span>
-					{skillTypes.DurationTypesNames[selectedSkill.duration] ?? selectedSkill.duration+ "s"}</p>
-
-				<p>
-					<span class="title">SP cost</span>
-					{selectedSkill.spCost}</p>
-
-				<p>
-					<span class="title">Starting SP</span>
-					{selectedSkill.initSp}</p>
-
-			</div>
-			<h3>{selectedSkill.name}</h3>
-			<p class="description">{@html parseDesc(selectedSkill.description, selectedSkill.blackboard)}</p>
-			{#if selectedSkill.range}
-				<Range rangeId={selectedSkill.range}/>
-			{/if}
-		</article>
+			</article>
+		{/if}
 	</section>
 
 </section>
