@@ -6,7 +6,8 @@
 			"charger": "Charger",
 			"tactician": "Tactician",
 			"bearer": "Standard Bearer",
-			"agent": "Agent"
+			"agent": "Agent",
+			"counsellor": "Strategist"
 		}
 	},
 	"WARRIOR": {
@@ -24,7 +25,8 @@
 			"librator": "Liberator",
 			"crusher": "Crusher",
 			"hammer": "Earthshaker",
-			"primguard": "Primal Guard"
+			"primguard": "Primal Guard",
+			"mercenary": "Mercenary"
 		}
 	},
 	"TANK": {
