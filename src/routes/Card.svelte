@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { fexli_url, puppiz_url } from "$lib/consts";
+    import { fexli_url, puppiz_url, sanityGone_url } from "$lib/consts";
 	import professions from "$lib/data/professions.json";
 	import { lazyLoad } from '$lib/utils/lazyload'
 
@@ -18,7 +18,7 @@
 		src="{ puppiz_url }/ui/chara/bg-{ rarity }.png" 
 		alt="BG">
 	<img class="layer portrait" 
-		use:lazyLoad={`${fexli_url}/charpor/${operator.id}_1.png`}
+		use:lazyLoad={`${sanityGone_url}/cn/arts/charportraits/${operator.id}_1.webp`}
 		alt="portrait">
 	<div class="layer bg2"></div>
 	<img class="layer header" 
