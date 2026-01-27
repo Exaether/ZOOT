@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { puppiz_url } from "$lib/consts";
+    import { images_url, puppiz_url } from "$lib/consts";
 	import professions from "$lib/data/professions.json";
     import { parseDesc } from "$lib/utils/blackBoardUtils";
 
@@ -54,12 +54,14 @@
 		</div>
 
 		<div class="classBox">
-			<img class="class" 
-				src="{ puppiz_url }/classes/black/icon_profession_{ professions[op.profession].name }_large.png" 
-				alt="class">
+			<div class="class">
+				<img 
+					src="{ images_url }/ui/profession/icon_profession_{ op.profession.toLowerCase() }.webp" 
+					alt="class">
+			</div>
 			<div class="subClass" >
 				<img 
-					src="{ puppiz_url }/ui/subclass/sub_{ op.subProfession }_icon.png" 
+					src="{ images_url }/ui/subprofession/sub_{ op.subProfession }_icon.webp" 
 					alt="subclass">
 			</div>
 		</div>
@@ -124,16 +126,11 @@
 	width: 16%;
 }
 
-.class {
-	width: 100%;
-	aspect-ratio: 1 / 1;
-	margin-bottom: 5%;
-}
-
-.subClass {
+.subClass, .class {
 	width: 100%;
 	aspect-ratio: 1 / 1;
 	background-color: black;
+	margin-bottom: 5%;
 	display: flex;
 	align-items: center;
 	justify-content: center;

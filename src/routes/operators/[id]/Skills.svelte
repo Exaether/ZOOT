@@ -1,6 +1,6 @@
 <script lang="ts">
     import Range from "$lib/components/Range.svelte";
-    import { puppiz_url } from "$lib/consts";
+    import { images_url, puppiz_url } from "$lib/consts";
 	import skillTypes from "$lib/data/skillTypes.json"
     import { parseDesc } from "$lib/utils/blackBoardUtils";
     import Tabs from "./Tabs.svelte";
@@ -60,7 +60,7 @@
 				<input type="range" bind:value={skillLevel} min="1" max="{maxSkillLevel}">
 			</div>
 			<article class="skillDetail">
-				<img src="{puppiz_url}/skills/skill_icon_{selectedSkill.id}.png" alt="skill icon">
+				<img src="{images_url}/skills/skill_icon_{selectedSkill.id}.webp" alt="skill icon">
 				<div class="metadata">
 					<p style:--color={skillTypes.SPTypesColors[selectedSkill.spType]}>
 						<span class="title">Recovery</span>

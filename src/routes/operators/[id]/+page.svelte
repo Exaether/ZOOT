@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { puppiz_url } from '$lib/consts.js';
+    import { images_url, puppiz_url } from '$lib/consts.js';
     import Graphs from './Graphs.svelte';
     import Infos from './Infos.svelte';
     import Skills from './Skills.svelte';
@@ -34,7 +34,7 @@
 </svelte:head>
 
 <section class="image">
-	<img src="{ puppiz_url }/characters/{ op.skins[0] }.png" alt="">
+	<img src="{ images_url }/arts/{ op.skins[0] }.webp" alt="">
 </section>
 <Infos {op} {trait} {talents} {selectedPhase}/>
 <section id="selector">

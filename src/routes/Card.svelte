@@ -1,6 +1,5 @@
 <script lang="ts">
-    import { fexli_url, puppiz_url, sanityGone_url } from "$lib/consts";
-	import professions from "$lib/data/professions.json";
+    import { images_url } from "$lib/consts";
 	import { lazyLoad } from '$lib/utils/lazyload'
 
 	let { operator } = $props();
@@ -9,41 +8,39 @@
 		rarity = 1;
 	}
 
-	let prof = professions[operator.profession].name;
 </script>
 
 
 <a href="/operators/{ operator.id }" class="card">
 	<img class="layer bg" 
-		src="{ puppiz_url }/ui/chara/bg-{ rarity }.png" 
+		src="{ images_url }/ui/char_card/background_{ rarity }.webp" 
 		alt="BG">
 	<img class="layer portrait" 
-		use:lazyLoad={`${sanityGone_url}/cn/arts/charportraits/${operator.id}_1.webp`}
+		use:lazyLoad={`${images_url}/portraits/${operator.id}_1.webp`}
 		alt="portrait">
 	<div class="layer bg2"></div>
 	<img class="layer header" 
-		src="{ puppiz_url }/ui/chara/header-{ rarity }.png" 
+		src="{ images_url }/ui/char_card/header_{ operator.rarity }.webp" 
 		alt="header">
 	<img class="layer glow" 
-		src="{ puppiz_url }/ui/chara/glow-{ operator.rarity }.png" 
+		src="{ images_url }/ui/char_card/glow_{ operator.rarity }.webp" 
 		alt="glow">
 	<img class="layer banner" 
-		src="{ puppiz_url }/ui/chara/banner-{ rarity }.png" 
+		src="{ images_url }/ui/char_card/banner_{ rarity }.webp" 
 		alt="banner">
 	<div class="layer subClass" >
 		<img 
-			src="{ puppiz_url }/ui/subclass/sub_{ operator.subProfession }_icon.png" 
+			src="{ images_url }/ui/subprofession/sub_{ operator.subProfession }_icon.webp" 
 			alt="subclass">
 	</div>
-	<img class="layer class" 
-		src="{ puppiz_url }/classes/black/icon_profession_{ prof }_large.png" 
-		alt="class">
-	{#each {length : operator.rarity}, i}
-		<img class="layer star" 
-			style="left: {24 + i * 9}%"
-			src="{ puppiz_url }/ui/star.png" 
-			alt="star">
-	{/each}
+	<div class="layer class">
+		<img
+			src="{ images_url }/ui/profession/icon_profession_{ operator.profession.toLowerCase() }.webp" 
+			alt="class">
+	</div>
+	<img class="layer stars" 
+		src="{ images_url }/ui/char_card/star_{ operator.rarity }.webp" 
+		alt="banner">
 	<h3 class="layer name">{ operator.name }</h3>
 </a>
 
@@ -54,11 +51,17 @@
 	width: 12.5%;
 	aspect-ratio: 1 / 2;
 	transition: transform .2s;
+	
 
 	.layer {
 		position: absolute;
 		left: 0;
 		width: 100%;
+	}
+	.stars {
+		height: 2.5em;
+		left: 24%;
+		width: unset;
 	}
 	.bg, .portrait, .header{
 		top: 0;
@@ -68,6 +71,9 @@
 		height: 10%;
 		background-color: hsl(0, 0%, 30%);
 	}
+	.header {
+		width: 50%;
+	}
 	.glow {
 		bottom: 10%;
 	}
@@ -76,13 +82,7 @@
 		bottom: -2.5%;
 		left: -5%;
 	}
-	.class {
-		top: 1%;
-		left: 2%;
-		width: 22%;
-		aspect-ratio: 1 / 1;
-	}
-	.subClass {
+	.subClass, .class {
 		top: 13%;
 		left: 2%;
 		width: 22%;
@@ -96,6 +96,11 @@
 			height: 95%;
 			object-fit: contain;
 		}
+	}
+	.class {
+		top: 1%;
+		left: 2%;
+		width: 22%;
 	}
 	.star {
 		top: 1%;
