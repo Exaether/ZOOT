@@ -1,4 +1,7 @@
 # ZOOT
+<p align="center">
+<img src="./src/lib/assets/zoot.svg" alt="logo" width="300"/>
+</p>
 
 [https://exaether.org](https://exaether.org)
 
