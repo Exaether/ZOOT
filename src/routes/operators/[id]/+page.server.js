@@ -10,8 +10,10 @@ export async function load({ params }) {
 	const trait = operator.trait;
 	const talents = operator.talents;
 	const phases = operator.phases;
+	const potentials = operator.potentialRanks;
+	const favor = operator.favor;
 
-	const skills = await Promise.all( op.skills.map(async (/** @type {string} */ sk) => {
+	const skills = await Promise.all(op.skills.map(async (/** @type {string} */ sk) => {
 		const response = await fetch(env.SLUMBER_URL + "/skills/" + sk);
 		if (!response.ok) error(404, "Skill not found");
 		return response.json();
@@ -22,6 +24,8 @@ export async function load({ params }) {
 		trait,
 		talents,
 		phases,
-		skills
-	} 
+		skills,
+		potentials,
+		favor
+	}
 }
