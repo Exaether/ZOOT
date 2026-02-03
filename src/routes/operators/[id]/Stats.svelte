@@ -1,160 +1,22 @@
 <script lang="ts">
 	import Range from "$lib/components/Range.svelte";
-	import { images_url, puppiz_url } from "$lib/consts";
-
+	import { puppiz_url } from "$lib/consts";
 	import PotentialSelector from "./PotentialSelector.svelte";
+	import type { OperatorState } from "$lib/states/OperatorState.svelte";
 
-	let {
-		phases,
-		potentials,
-		favor,
-		selectedPhase = $bindable(),
-		attributes = $bindable(),
-		selectedPotential = $bindable(),
-	} = $props();
-
-	// variables
-	selectedPhase = phases.length - 1;
-	let maxLevel = $derived(phases[selectedPhase].maxLevel);
-	let currentLevel = $derived(
-		Math.min(maxLevel, phases[phases.length - 1].maxLevel),
-	);
-
-	let trustBonus = $state(false);
-
-	attributes = calculate_stats(
-		phases[selectedPhase],
-		1,
-		selectedPotential,
-		false,
-	);
-
-	$effect(() => {
-		attributes = calculate_stats(
-			phases[selectedPhase],
-			currentLevel,
-			selectedPotential,
-			trustBonus,
-		);
-	});
-
-	type StatKey =
-		| "maxHP"
-		| "atk"
-		| "def"
-		| "res"
-		| "cost"
-		| "baseAttackTime"
-		| "respawnTime"
-		| "block"
-		| "taunt";
-
-	function calculate_stats(
-		phase: {
-			range: any;
-			maxLevel: number;
-			minStats: any;
-			maxStats: any;
-		},
-		level: number,
-		potentialRank: number,
-		trust: boolean,
-	) {
-		let levelfactor = level / phase.maxLevel;
-		let minStats = phase.minStats;
-		let maxStats = phase.maxStats;
-
-		let stats = {
-			range: phase.range,
-			maxHP: Math.round(
-				minStats.maxHP +
-					(maxStats.maxHP - minStats.maxHP) * levelfactor,
-			),
-			atk: Math.round(
-				minStats.atk + (maxStats.atk - minStats.atk) * levelfactor,
-			),
-			def: Math.round(
-				minStats.def + (maxStats.def - minStats.def) * levelfactor,
-			),
-			res: Math.round(
-				minStats.res + (maxStats.res - minStats.res) * levelfactor,
-			),
-			cost: minStats.cost,
-			baseAttackTime: minStats.baseAttackTime,
-			respawnTime: minStats.respawnTime,
-			block: minStats.block,
-			taunt: minStats.taunt,
-		};
-
-		// Apply potential buffs
-		for (let i = 0; i < potentialRank; i++) {
-			if (i >= potentials.length) break;
-
-			const p = potentials[i];
-			if (p.type === "BUFF") {
-				const attr = p.attribute.toLowerCase();
-
-				let statKey: StatKey | "" = "";
-				if (attr === "max_hp" || attr === "hp") statKey = "maxHP";
-				else if (attr === "atk") statKey = "atk";
-				else if (attr === "def") statKey = "def";
-				else if (attr === "magic_resistance" || attr === "res")
-					statKey = "res";
-				else if (attr === "cost" || attr === "dp_cost")
-					statKey = "cost";
-				else if (attr === "attack_speed") statKey = "baseAttackTime";
-				else if (attr === "block_cnt") statKey = "block";
-				else if (attr === "respawn_time") statKey = "respawnTime";
-
-				if (statKey && stats[statKey] !== undefined) {
-					if (p.formula === "ADDITION") {
-						stats[statKey] += p.value;
-					}
-				}
-			}
-		}
-
-		// Apply Trust Bonus
-		if (trust && favor) {
-			for (const key in favor) {
-				if (stats[key as StatKey] !== undefined) {
-					stats[key as StatKey] += favor[key];
-				}
-			}
-		}
-
-		return stats;
-	}
-
-	function getTrustBonusText(favor: Record<string, number>): string {
-		if (!favor) return "";
-		let bonuses: string[] = [];
-		for (const [key, value] of Object.entries(favor)) {
-			if (value > 0) {
-				let name = key;
-				if (key === "maxHP") name = "Max HP";
-				else if (key === "atk") name = "ATK";
-				else if (key === "def") name = "DEF";
-				else if (key === "res") name = "RES";
-				else if (key === "attack_speed") name = "ASPD";
-
-				if (name) bonuses.push(`${name} +${value}`);
-			}
-		}
-		return bonuses.join(", ");
-	}
+	let { operatorState }: { operatorState: OperatorState } = $props();
 </script>
 
 <section id="attributes">
 	<div class="selectors">
 		<div class="phase-select">
-			{#each { length: phases.length }, p}
+			{#each { length: operatorState.phases.length }, p}
 				<input
 					type="radio"
 					name="phases"
 					id="phase{p}"
 					value={p}
-					bind:group={selectedPhase}
+					bind:group={operatorState.selectedPhase}
 				/>
 				<label for="phase{p}">
 					<img src="{puppiz_url}/ui/elite/{p}.png" alt="elite{p}" />
@@ -162,55 +24,72 @@
 			{/each}
 		</div>
 
-		<PotentialSelector {potentials} bind:selectedPotential />
+		<PotentialSelector
+			potentials={operatorState.potentials}
+			bind:selectedPotential={operatorState.selectedPotential}
+		/>
 
 		<div class="trust-select">
 			<label for="trust-check">Trust Bonus:</label>
-			<input type="checkbox" id="trust-check" bind:checked={trustBonus} />
-			<span class="trust-desc">{getTrustBonusText(favor)}</span>
+			<input
+				type="checkbox"
+				id="trust-check"
+				bind:checked={operatorState.isTrustBonusActive}
+			/>
+			<span class="trust-desc">{operatorState.trustBonusText}</span>
 		</div>
 	</div>
 
 	<div id="levelSelect">
-		<input type="number" bind:value={currentLevel} min="1" max={maxLevel} />
-		<input type="range" bind:value={currentLevel} min="1" max={maxLevel} />
+		<input
+			type="number"
+			bind:value={operatorState.currentLevel}
+			min="1"
+			max={operatorState.maxLevel}
+		/>
+		<input
+			type="range"
+			bind:value={operatorState.currentLevel}
+			min="1"
+			max={operatorState.maxLevel}
+		/>
 	</div>
 	<section class="stats">
 		<div>
 			<h4>Max HP</h4>
-			<p>{attributes.maxHP}</p>
+			<p>{operatorState.attributes.maxHP}</p>
 		</div>
 		<div>
 			<h4>ATK</h4>
-			<p>{attributes.atk}</p>
+			<p>{operatorState.attributes.atk}</p>
 		</div>
 		<div>
 			<h4>DEF</h4>
-			<p>{attributes.def}</p>
+			<p>{operatorState.attributes.def}</p>
 		</div>
 		<div>
 			<h4>RES</h4>
-			<p>{attributes.res}</p>
+			<p>{operatorState.attributes.res}</p>
 		</div>
 		<div>
 			<h4>Redeployment time</h4>
-			<p>{attributes.respawnTime}s</p>
+			<p>{operatorState.attributes.respawnTime}s</p>
 		</div>
 		<div>
 			<h4>DP cost</h4>
-			<p>{attributes.cost}</p>
+			<p>{operatorState.attributes.cost}</p>
 		</div>
 		<div>
 			<h4>Block</h4>
-			<p>{attributes.block}</p>
+			<p>{operatorState.attributes.block}</p>
 		</div>
 		<div>
 			<h4>Attack interval</h4>
-			<p>{attributes.baseAttackTime}s</p>
+			<p>{operatorState.attributes.baseAttackTime}s</p>
 		</div>
 		<div>
 			<h4>Range</h4>
-			<p><Range rangeId={attributes.range} /></p>
+			<p><Range rangeId={operatorState.attributes.range} /></p>
 		</div>
 	</section>
 </section>

@@ -6,6 +6,8 @@
 	import Stats from "./Stats.svelte";
 	import Tabs from "./Tabs.svelte";
 
+	import { OperatorState } from "$lib/states/OperatorState.svelte";
+
 	// operator data
 	let { data } = $props();
 	let op = data.op;
@@ -17,10 +19,8 @@
 	let favor = data.favor;
 
 	// variables
-	let selectedPhase = $state();
-	let attributes = $state();
+	let operatorState = new OperatorState(phases, potentials, favor);
 	let selectedSkill = $state("");
-	let selectedPotential = $state(0);
 
 	// tabs
 	let tabItems = [
@@ -38,18 +38,17 @@
 <section class="image">
 	<img src="{images_url}/arts/{op.skins[0]}.webp" alt="" />
 </section>
-<Infos {op} {trait} {talents} {selectedPhase} {selectedPotential} />
+<Infos
+	{op}
+	{trait}
+	{talents}
+	selectedPhase={operatorState.selectedPhase}
+	selectedPotential={operatorState.selectedPotential}
+/>
 <section id="selector">
 	<Tabs bind:activeTabValue={currentTab} items={tabItems} />
 	<span hidden={currentTab !== 1}>
-		<Stats
-			{phases}
-			{potentials}
-			{favor}
-			bind:selectedPhase
-			bind:attributes
-			bind:selectedPotential
-		/>
+		<Stats {operatorState} />
 	</span>
 	<span hidden={currentTab !== 2}>
 		<Skills {skills} bind:selectedSkill />
