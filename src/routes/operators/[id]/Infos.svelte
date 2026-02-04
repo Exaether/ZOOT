@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { images_url, puppiz_url } from "$lib/consts";
-	import professions from "$lib/data/professions.json";
 	import { parseDesc } from "$lib/utils/blackBoardUtils";
 
 	let { op, trait, talents, selectedPhase, selectedPotential = 0 } = $props();
@@ -53,27 +52,20 @@
 
 <section id="operator">
 	<section class="infos">
-		<h1>{op.name}</h1>
-
-		<div class="stars">
-			{#each { length: op.rarity }, i}
-				<svg
-					style:left="{-i * 1.1}em"
-					fill="#000000"
-					viewBox="0 0 32 32"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
-						id="SVGRepo_tracerCarrier"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-					></g><g id="SVGRepo_iconCarrier"
-						><path
-							d="M16 4.588l2.833 8.719H28l-7.416 5.387 2.832 8.719L16 22.023l-7.417 5.389 2.833-8.719L4 13.307h9.167L16 4.588z"
-						></path></g
+		<div class="header-row">
+			<h1>{op.name}</h1>
+			<div class="stars">
+				{#each { length: op.rarity }, i}
+					<svg
+						style:left="{-i * 0.8}em"
+						fill="#000000"
+						viewBox="0 0 32 32"
+						xmlns="http://www.w3.org/2000/svg"
 					>
-				</svg>
-			{/each}
+						<g id="SVGRepo_bgCarrier" stroke-width="0"></g> <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"> </g> <g id="SVGRepo_iconCarrier"> <path d="M16 4.588l2.833 8.719H28l-7.416 5.387 2.832 8.719L16 22.023l-7.417 5.389 2.833-8.719L4 13.307h9.167L16 4.588z"> </path> </g>
+					</svg>
+				{/each}
+			</div>
 		</div>
 
 		<div class="classBox">
@@ -93,20 +85,23 @@
 
 		<p class="trait">{@html traitDesc}</p>
 	</section>
+
 	<section class="talents">
 		<h2>Talents</h2>
-		{#each talents as talent}
-			<article class="talent">
-				<h2>{talent.name}</h2>
-				<p>
-					{@html getTalentDesc(
-						talent,
-						selectedPhase,
-						selectedPotential,
-					)}
-				</p>
-			</article>
-		{/each}
+		<div class="talents-list">
+			{#each talents as talent}
+				<article class="talent">
+					<h3>{talent.name}</h3>
+					<p>
+						{@html getTalentDesc(
+							talent,
+							selectedPhase,
+							selectedPotential,
+						)}
+					</p>
+				</article>
+			{/each}
+		</div>
 	</section>
 </section>
 
@@ -114,47 +109,64 @@
 	#operator {
 		color: whitesmoke;
 		font-family: sans-serif;
-		height: 50%;
-		width: 50%;
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		background-color: hsla(0, 0%, 20%, 97%);
+		height: 100%;
+		width: 100%;
+		background-color: #2a2a2a;
 		box-sizing: border-box;
-		padding-left: 2em;
 		display: flex;
-		gap: 4em;
+		flex-direction: row;
 	}
 
 	.infos {
-		background-color: hsl(0, 0%, 10%);
+		background-color: #1f1f1f;
 		position: relative;
-		width: 47%;
+		flex: 1;
 		height: 100%;
-		padding: 1em;
+		padding: 2em;
 		box-sizing: border-box;
-		h1 {
-			font-size: 3.5em;
-			margin-top: 0;
-			margin-bottom: 0;
-			margin-right: 5%;
-		}
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+		overflow-y: auto;
+	}
+
+	.header-row {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5em;
+		padding-right: 20%;
+	}
+
+	.infos h1 {
+		font-size: 2.5em;
+		margin: 0;
+		word-wrap: break-word;
+		line-height: 1.1;
 	}
 
 	.stars {
+		display: flex;
+		height: 3em;
+		align-items: center;
+		margin-top: 0.5em;
+
 		svg {
 			position: relative;
 			fill: hsl(50, 100%, 45%);
 			transform: rotate(15deg);
-			width: 3.5em;
+			width: 3em;
+			flex-shrink: 0;
 		}
 	}
 
 	.classBox {
 		position: absolute;
-		top: 1em;
-		right: -8%;
-		width: 16%;
+		top: 2em;
+		right: 1em;
+		width: 4em;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5em;
 	}
 
 	.subClass,
@@ -162,75 +174,112 @@
 		width: 100%;
 		aspect-ratio: 1 / 1;
 		background-color: black;
-		margin-bottom: 5%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+
 		img {
-			width: 95%;
-			height: 95%;
+			width: 90%;
+			height: 90%;
 			object-fit: contain;
 		}
 	}
 
 	.trait {
-		margin-top: 3em;
-		font-size: 1em;
-		line-height: 2em;
-		padding: 1em;
-		background-color: hsl(0, 0%, 30%);
+		font-size: 1.1em;
+		line-height: 1.6;
+		padding: 1.5em;
+		background-color: #333;
+		border-radius: 4px;
+		margin-top: 2em;
+		margin-bottom: auto;
+		border-left: 4px solid hsl(200, 80%, 50%);
 	}
 
 	:global(.kw) {
-		background-color: hsl(0, 0%, 20%);
-		padding: 0.15em;
-		border-radius: 0.3em;
-		color: hsl(200, 100%, 50%);
+		background-color: hsl(0, 0%, 25%);
+		padding: 0.1em 0.3em;
+		border-radius: 0.2em;
+		color: hsl(200, 100%, 60%);
+		font-weight: bold;
 	}
 
 	.talents {
-		padding-top: 1em;
-		width: 45%;
+		flex: 1;
+		padding: 2em;
+		background-color: #2a2a2a;
+		overflow-y: auto;
 		display: flex;
 		flex-direction: column;
-		gap: 5%;
-		article {
-			border: 3px solid hsl(0, 0%, 10%);
-			border-radius: 3px;
+	}
 
-			h2 {
-				margin: 0;
-				width: 100%;
-				background-color: hsl(0, 0%, 10%);
-			}
-			p {
-				margin: 1em;
-				padding: 0;
-			}
+	.talents h2 {
+		margin-top: 0;
+		border-bottom: 2px solid #444;
+		padding-bottom: 0.5em;
+		margin-bottom: 1em;
+		color: #ddd;
+	}
+
+	.talents-list {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+	}
+
+	.talent {
+		background-color: #333;
+		border-radius: 4px;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		border: 1px solid #444;
+
+		h3 {
+			margin: 0;
+			background-color: #1f1f1f;
+			padding: 8px 10px;
+			font-size: 0.9em;
+			color: #bbb;
+		}
+
+		p {
+			margin: 0;
+			padding: 12px 10px;
+			font-size: 1.1em;
 		}
 	}
 
-	@media (max-width: 600px) {
+	@media (max-width: 1200px) {
+		.infos h1 {
+			font-size: 2em;
+		}
+	}
+
+	@media (max-width: 900px) {
 		#operator {
-			height: unset;
-			width: 100%;
-			position: static;
 			flex-direction: column;
-			gap: 1em;
-			align-items: center;
-			padding: 0;
-			padding-bottom: 1em;
+			height: auto;
 		}
-
-		.infos {
-			width: 85%;
-			height: unset;
-		}
-
+		.infos,
 		.talents {
-			padding-top: 0;
-			width: 85%;
-			gap: 1em;
+			width: 100%;
+			flex: none;
+			height: auto;
+		}
+		.header-row {
+			padding-right: 0;
+		}
+		.classBox {
+			position: static;
+			flex-direction: row;
+			width: auto;
+			margin-top: 1em;
+			justify-content: flex-start;
+		}
+		.subClass,
+		.class {
+			width: 3em;
 		}
 	}
 </style>

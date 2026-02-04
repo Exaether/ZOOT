@@ -29,35 +29,13 @@
 <style>
 	ul {
 		width: 100%;
-		height: 8%;
 		display: flex;
 		flex-wrap: wrap;
 		padding-left: 0;
 		margin: 0;
 		list-style: none;
-		border-top: 1px solid black;
 		box-sizing: border-box;
-		background-color: hsla(0, 0%, 13%, 97%);
-	}
-
-	.tab-btn {
-		appearance: none;
-		border: none;
-		height: 100%;
-		width: 100%;
-		display: block;
-		cursor: pointer;
-		padding-inline: 1em;
-		font-family: sans-serif;
-		color: whitesmoke;
-		font-weight: bold;
-		font-size: 1.8em;
-		background-color: hsla(0, 0%, 13%, 97%);
-		transition: background-color 0.3s;
-	}
-
-	.tab-btn:hover {
-		background-color: hsla(0, 0%, 20%, 97%);
+		background-color: #1f1f1f;
 	}
 
 	li {
@@ -65,7 +43,37 @@
 		text-align: center;
 	}
 
+	.tab-btn {
+		appearance: none;
+		border: none;
+		display: block;
+		width: 100%;
+		cursor: pointer;
+		padding-block: .5em;
+		font-family: sans-serif;
+		color: #888;
+		font-weight: bold;
+		font-size: 1.2em;
+		background-color: transparent;
+		transition: all 0.2s;
+		border-bottom: 2px solid black;
+	}
+
+	.tab-btn:hover {
+		color: #ddd;
+		background-color: #252525;
+	}
+
 	li.active > .tab-btn {
-		background-color: hsla(0, 0%, 20%, 97%);
+		color: white;
+		background-color: #2a2a2a;
+		border-bottom-color: hsl(200, 80%, 50%);
+	}
+
+	@media (max-width: 600px) {
+		.tab-btn {
+			font-size: 1em;
+			padding: 0.8em 0.2em;
+		}
 	}
 </style>

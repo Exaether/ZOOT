@@ -59,8 +59,8 @@
 
 <style>
     .potential-select {
-        background-color: hsl(0, 0%, 10%);
-        border-radius: 15px;
+        background-color: #1f1f1f;
+        border-radius: 4px;
         padding: 0.5em;
         display: flex;
         flex-direction: column;
@@ -105,7 +105,6 @@
             flex-direction: column;
             gap: 0.5em;
             z-index: 10;
-            max-height: 300px;
             overflow-y: auto;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             width: max-content;

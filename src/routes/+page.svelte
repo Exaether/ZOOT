@@ -21,109 +21,161 @@
 	<title>ZOOT</title>
 </svelte:head>
 
-<div class="header">
-	<label class="search">
-		<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-			><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
-				id="SVGRepo_tracerCarrier"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			></g><g id="SVGRepo_iconCarrier">
-				<path
-					d="M14.9536 14.9458L21 21M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
-					stroke="#ffffff"
-					stroke-width="2"
+<main class="page-container">
+	<div class="header">
+		<label class="search">
+			<svg
+				viewBox="0 0 24 24"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+				<g
+					id="SVGRepo_tracerCarrier"
 					stroke-linecap="round"
 					stroke-linejoin="round"
-				></path>
-			</g></svg
-		>
-		<input type="text" placeholder="Search..." bind:value={searchText} />
-	</label>
-	<RarityFilter bind:rarityFilter />
-</div>
-<div use:autoAnimate class="list">
-	{#each operators
-		.filter(opFilter)
-		.filter(rarityFilter)
-		.filter(nameFilter) as op (op.id)}
-		<Card operator={op} />
-	{/each}
-</div>
-<ClassFilter bind:opFilter />
+				></g>
+				<g id="SVGRepo_iconCarrier">
+					<path
+						d="M14.9536 14.9458L21 21M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+						stroke="#ffffff"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					></path>
+				</g>
+			</svg>
+			<input
+				type="text"
+				placeholder="Search..."
+				bind:value={searchText}
+			/>
+		</label>
+		<RarityFilter bind:rarityFilter />
+	</div>
+
+	<div use:autoAnimate class="list">
+		{#each operators
+			.filter(opFilter)
+			.filter(rarityFilter)
+			.filter(nameFilter) as op (op.id)}
+			<Card operator={op} />
+		{/each}
+	</div>
+
+	<ClassFilter bind:opFilter />
+</main>
 
 <style>
-	.list {
-		width: 89.7%;
-		height: 92%;
+	:global(html),
+	:global(body) {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+		overflow: hidden;
+		background-color: #1a1a1a;
+		font-family: sans-serif;
+	}
+
+	.page-container {
+		height: 100%;
+		width: 100%;
 		display: flex;
-		flex-wrap: wrap;
-		gap: 2%;
-		row-gap: 3%;
-		padding-inline: 1%;
-		padding-top: 1%;
-		align-content: flex-start;
-		justify-content: flex-start;
-		overflow-y: scroll;
+		flex-direction: column;
+		overflow: hidden;
 	}
 
 	.header {
-		height: 6%;
-		width: 100%;
+		height: 6vh;
+		min-height: 50px;
 		background-color: black;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		gap: 20px;
 		position: relative;
+		width: 100%;
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
 	}
 
 	.search {
-		height: 100%;
 		display: flex;
 		align-items: center;
 		gap: 10px;
+		padding: 5px 0;
+		height: 38px;
+		border-bottom: 2px solid white;
+		transition: all 0.2s ease;
+	}
+
+	.search:focus-within {
+		border-color: hsl(200, 80%, 50%);
 	}
 
 	.search svg {
-		height: 60%;
+		height: 24px;
+		width: 24px;
+		opacity: 1;
 	}
 
 	.search input {
 		color: white;
-		font-size: 1.5em;
-		height: 80%;
+		font-size: 1.5rem;
 		background: none;
 		border: none;
-		border-bottom: 5px solid white;
-		border-radius: 2px;
+		outline: none;
+		width: 250px;
+		font-family: sans-serif;
 	}
 
-	.search input:focus {
-		border-color: hsl(200, 80%, 50%);
-		transition: border-color 0.5s;
-		outline: none;
+	.search input::placeholder {
+		color: rgba(255, 255, 255, 0.5);
+		font-size: 1rem;
+		vertical-align: middle;
+	}
+
+	.list {
+		flex: 1;
+		width: 96%; /* Leave room for ClassFilter sidebar (4%) */
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2%;
+		row-gap: 3%;
+		padding: 1%;
+		padding-right: 5%; /* Extra padding near sidebar */
+		align-content: flex-start;
+		justify-content: flex-start;
+		overflow-y: auto;
+		box-sizing: border-box;
+		position: relative;
 	}
 
 	@media (max-width: 600px) {
 		.header {
-			height: 6vh;
-			width: 100vw;
+			height: auto;
+			min-height: 6vh;
 			justify-content: space-between;
-			gap: 2%;
+			padding: 10px 5%;
+			box-sizing: border-box;
+			flex-wrap: wrap;
 		}
+
 		.search {
-			width: 40%;
+			width: 60%;
+			height: auto;
 		}
+
 		.search input {
 			width: 100%;
-			font-size: 1em;
+			font-size: 1.2rem;
 		}
+
 		.list {
-			width: 95vw;
-			gap: 7%;
-			row-gap: 3%;
-			padding-top: 15vh;
-			padding-left: 4%;
+			width: 100%;
+			padding: 5%;
+			padding-top: 20px;
+			gap: 5%;
+			justify-content: center;
 		}
 	}
 </style>
