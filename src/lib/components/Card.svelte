@@ -51,7 +51,7 @@
 	<img
 		class="layer stars"
 		src="{images_url}/ui/char_card/star_{operator.rarity}.webp"
-		alt="banner"
+		alt="stars"
 	/>
 	<h3 class="layer name">{operator.name}</h3>
 </a>
@@ -136,6 +136,10 @@
 	@media (max-width: 600px) {
 		.card {
 			width: 45%;
+			.stars {
+				top: .3em;
+				height: 2.2em;
+			}
 		}
 	}
 </style>

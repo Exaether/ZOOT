@@ -80,14 +80,16 @@
 		width: 4%;
 		display: flex;
 		flex-direction: column;
-		background-color: var(--bg-header);
 		justify-content: space-evenly;
+		gap: 10px;
 		align-items: center;
+		background-color: var(--bg-header);
 		overflow-y: scroll;
 	}
 
 	.filterButton {
 		background: none;
+		padding: 0;
 		width: 90%;
 		aspect-ratio: 1 / 1;
 		border-radius: 0;
@@ -123,13 +125,17 @@
 		}
 		.subClassFilter {
 			top: 12vh;
-			border-top: 5px solid var(--color-accent);
+			border-top: 2px solid var(--color-accent);
 			border-right: none;
 		}
 		.filterButton {
 			width: unset;
-			height: 90%;
+			height: 70%;
 			font-size: 1.5em;
+		}
+		.filterButton img {
+			width: unset;
+			height: 100%;
 		}
 	}
 </style>

@@ -104,12 +104,12 @@
 
 	.reset {
 		height: 70%;
-		fill: var(--icon-reset);
+		fill: hsl(0, 0%, 50%);
 		transition: fill 0.2s;
 	}
 
 	.reset:hover {
-		fill: var(--icon-reset-hover);
+		fill: hsl(0, 100%, 50%);
 	}
 
 	.star-btn {
@@ -148,8 +148,12 @@
 
 	@media (max-width: 600px) {
 		.filterBox {
-			height: 50%;
-			width: auto;
+			height: 100%;
+			width: 50%;
+			padding-inline: 0;
+		}
+		.star-btn {
+			margin-left: -5px;
 		}
 	}
 </style>

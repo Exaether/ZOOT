@@ -189,10 +189,8 @@
 
 	}
 
-	.rank-image {
-		img {
-			width: 100%;
-		}
+	.rank-image img{
+		width: 100%;
 	}
 
 	.level-slider {
@@ -316,8 +314,17 @@
 		.level-controls {
 			width: 100%;
 			flex-direction: row;
-			height: auto;
+			height: 4em;
 			gap: 1rem;
+		}
+
+		.rank-image {
+			height: 100%;
+			img {
+				width: unset;
+				height: 100%;
+			}
+
 		}
 
 		.level-slider {
@@ -332,11 +339,6 @@
 
 		.skill-header {
 			flex-direction: column;
-		}
-
-		.skill-icon {
-			width: 60px;
-			height: 60px;
 		}
 
 		.skill-body {

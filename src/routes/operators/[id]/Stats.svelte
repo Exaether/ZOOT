@@ -303,14 +303,17 @@
 			width: 100%;
 			flex-direction: row;
 			flex-wrap: wrap;
-			justify-content: space-between;
-			align-items: flex-start;
+			justify-content: center;
+			align-items: center;
 		}
 
 		.phase-select,
-		.level-select,
 		.trust-select {
-			width: 30%;
+			width: 40%;
+			min-width: 100px;
+		}
+		.level-select {
+			width: 90%;
 			min-width: 100px;
 		}
 

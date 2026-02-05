@@ -75,7 +75,6 @@
 		margin: 0;
 		padding: 0;
 		background-color: var(--bg-main);
-		overflow: hidden;
 	}
 
 	.operator-layout {
@@ -84,7 +83,6 @@
 		grid-template-rows: 1fr 1fr;
 		height: 100vh;
 		width: 100vw;
-		overflow: hidden;
 	}
 
 	.area-image {
@@ -151,16 +149,11 @@
 	}
 
 	@media (max-width: 900px) {
-		:global(body) {
-			overflow-y: auto;
-		}
-
 		.operator-layout {
 			display: flex;
 			flex-direction: column;
-			height: auto;
+			height: unset;
 			min-height: 100vh;
-			overflow: visible;
 		}
 
 		.area-image {

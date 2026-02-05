@@ -207,6 +207,7 @@
 		overflow-y: auto;
 		display: flex;
 		flex-direction: column;
+		box-sizing: border-box;
 	}
 
 	.talents h2 {

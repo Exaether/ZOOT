@@ -135,13 +135,13 @@
 
 	.list {
 		flex: 1;
-		width: 96%; /* Leave room for ClassFilter sidebar (4%) */
+		width: 96%;
 		display: flex;
 		flex-wrap: wrap;
 		gap: 2%;
 		row-gap: 3%;
 		padding: 1%;
-		padding-right: 5%; /* Extra padding near sidebar */
+		padding-right: 5%;
 		align-content: flex-start;
 		justify-content: flex-start;
 		overflow-y: auto;
@@ -153,14 +153,13 @@
 		.header {
 			height: auto;
 			min-height: 6vh;
-			justify-content: space-between;
-			padding: 10px 5%;
+			justify-content: start;
+			padding: 0px 5%;
 			box-sizing: border-box;
-			flex-wrap: wrap;
 		}
 
 		.search {
-			width: 60%;
+			width: 40%;
 			height: auto;
 		}
 
@@ -172,7 +171,7 @@
 		.list {
 			width: 100%;
 			padding: 5%;
-			padding-top: 20px;
+			padding-top: 14vh;
 			gap: 5%;
 			justify-content: center;
 		}
