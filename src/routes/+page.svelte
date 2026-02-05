@@ -72,13 +72,12 @@
 		margin: 0;
 		padding: 0;
 		height: 100%;
-		overflow: hidden;
 		background-color: var(--bg-main);
 		font-family: sans-serif;
 	}
 
 	.page-container {
-		height: 100%;
+		height: 100vh;
 		width: 100%;
 		display: flex;
 		flex-direction: column;
@@ -150,6 +149,10 @@
 	}
 
 	@media (max-width: 600px) {
+		.page-container {
+			height: 100dvh;
+		}
+
 		.header {
 			height: auto;
 			min-height: 6vh;

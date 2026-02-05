@@ -91,17 +91,22 @@
 		background: none;
 		padding: 0;
 		width: 90%;
-		aspect-ratio: 1 / 1;
+		aspect-ratio: 1;
 		border-radius: 0;
 		border: none;
 		color: var(--text-primary);
 		font-weight: bold;
 		font-size: 2em;
 		transition: filter 0.3s;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	.filterButton img {
-		width: 100%;
+		object-fit: contain;
+		max-width: 100%;
+		max-height: 100%;
 	}
 
 	.subClassFilter {
@@ -130,12 +135,8 @@
 		}
 		.filterButton {
 			width: unset;
-			height: 70%;
+			height: 90%;
 			font-size: 1.5em;
-		}
-		.filterButton img {
-			width: unset;
-			height: 100%;
 		}
 	}
 </style>
