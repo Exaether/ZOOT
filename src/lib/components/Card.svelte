@@ -82,7 +82,7 @@
 		.bg2 {
 			bottom: 0;
 			height: 10%;
-			background-color: hsl(0, 0%, 30%);
+			background-color: var(--rarity-0);
 		}
 		.header {
 			width: 50%;
@@ -124,7 +124,7 @@
 			bottom: -3%;
 			font-size: 1.5em;
 			font-family: sans-serif;
-			color: white;
+			color: var(--text-primary);
 			text-align: right;
 		}
 	}

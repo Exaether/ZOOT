@@ -167,7 +167,7 @@
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		background-color: #2a2a2a;
+		background-color: var(--bg-main);
 	}
 
 	.skill-display {
@@ -202,13 +202,13 @@
 
 	.skill-detail {
 		flex: 1;
-		background-color: #333;
+		background-color: var(--bg-box);
 		border-radius: 4px;
 		padding: 1.5rem;
 		display: flex;
 		flex-direction: column;
 		gap: 1.5rem;
-		border: 1px solid #444;
+		border: 1px solid var(--color-border);
 	}
 
 	.skill-header {
@@ -232,7 +232,7 @@
 	.skill-title-block h3 {
 		margin: 0 0 1rem 0;
 		font-size: 1.5em;
-		border-bottom: 2px solid #555;
+		border-bottom: 2px solid var(--color-border);
 		padding-bottom: 0.5rem;
 	}
 
@@ -274,7 +274,7 @@
 	.skill-body {
 		display: flex;
 		gap: 1.5rem;
-		border-top: 1px solid #444;
+		border-top: 1px solid var(--color-border);
 		overflow-y: scroll;
 		padding-top: 1rem;
 		display: flex;
@@ -285,26 +285,26 @@
 		flex: 1;
 		font-size: 1.1em;
 		line-height: 1.6;
-		color: #ddd;
+		color: var(--text-primary);
 	}
 
 	.range-preview {
 		flex-shrink: 0;
 		padding: 0.5rem;
-		background: #222;
+		background: var(--bg-secondary);
 		border-radius: 4px;
 	}
 
 	:global(.vup) {
-		color: hsl(200, 100%, 60%);
+		color: var(--color-kw);
 		font-weight: bold;
 	}
 	:global(.vdown) {
-		color: hsl(20, 100%, 60%);
+		color: var(--color-vdown);
 		font-weight: bold;
 	}
 	:global(.rem) {
-		color: hsl(40, 100%, 60%);
+		color: var(--color-rem);
 		font-weight: bold;
 	}
 
@@ -340,7 +340,7 @@
 		}
 
 		.skill-body {
-			flex-direction: column-reverse; /* Range on top or bottom? */
+			flex-direction: column;
 		}
 
 		.range-preview {

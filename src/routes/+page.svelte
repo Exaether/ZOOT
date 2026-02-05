@@ -38,7 +38,7 @@
 				<g id="SVGRepo_iconCarrier">
 					<path
 						d="M14.9536 14.9458L21 21M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
-						stroke="#ffffff"
+						stroke="var(--text-primary)"
 						stroke-width="2"
 						stroke-linecap="round"
 						stroke-linejoin="round"
@@ -73,7 +73,7 @@
 		padding: 0;
 		height: 100%;
 		overflow: hidden;
-		background-color: #1a1a1a;
+		background-color: var(--bg-main);
 		font-family: sans-serif;
 	}
 
@@ -88,14 +88,13 @@
 	.header {
 		height: 6vh;
 		min-height: 50px;
-		background-color: black;
+		background-color: var(--bg-header);
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		gap: 20px;
 		position: relative;
 		width: 100%;
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
 	}
 
 	.search {
@@ -104,12 +103,12 @@
 		gap: 10px;
 		padding: 5px 0;
 		height: 38px;
-		border-bottom: 2px solid white;
+		border-bottom: 2px solid var(--text-primary);
 		transition: all 0.2s ease;
 	}
 
 	.search:focus-within {
-		border-color: hsl(200, 80%, 50%);
+		border-color: var(--color-accent);
 	}
 
 	.search svg {
@@ -119,7 +118,7 @@
 	}
 
 	.search input {
-		color: white;
+		color: var(--text-primary);
 		font-size: 1.5rem;
 		background: none;
 		border: none;

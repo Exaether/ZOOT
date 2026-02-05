@@ -107,18 +107,18 @@
 
 <style>
 	#operator {
-		color: whitesmoke;
+		color: var(--text-primary);
 		font-family: sans-serif;
 		height: 100%;
 		width: 100%;
-		background-color: #2a2a2a;
+		background-color: var(--bg-main);
 		box-sizing: border-box;
 		display: flex;
 		flex-direction: row;
 	}
 
 	.infos {
-		background-color: #1f1f1f;
+		background-color: var(--bg-secondary);
 		position: relative;
 		flex: 1;
 		height: 100%;
@@ -152,7 +152,7 @@
 
 		svg {
 			position: relative;
-			fill: hsl(50, 100%, 45%);
+			fill: var(--star-color);
 			transform: rotate(15deg);
 			width: 3em;
 			flex-shrink: 0;
@@ -189,17 +189,14 @@
 		font-size: 1.1em;
 		line-height: 1.6;
 		padding: 1.5em;
-		background-color: #333;
+		background-color: var(--bg-box);
 		border-radius: 4px;
 		margin-top: 2em;
 		margin-bottom: auto;
-		border-left: 4px solid hsl(200, 80%, 50%);
+		border-left: 4px solid var(--color-accent);
 	}
 
 	:global(.kw) {
-		background-color: hsl(0, 0%, 25%);
-		padding: 0.1em 0.3em;
-		border-radius: 0.2em;
 		color: hsl(200, 100%, 60%);
 		font-weight: bold;
 	}
@@ -207,7 +204,6 @@
 	.talents {
 		flex: 1;
 		padding: 2em;
-		background-color: #2a2a2a;
 		overflow-y: auto;
 		display: flex;
 		flex-direction: column;
@@ -215,10 +211,9 @@
 
 	.talents h2 {
 		margin-top: 0;
-		border-bottom: 2px solid #444;
+		border-bottom: 2px solid var(--color-border);
 		padding-bottom: 0.5em;
 		margin-bottom: 1em;
-		color: #ddd;
 	}
 
 	.talents-list {
@@ -228,19 +223,19 @@
 	}
 
 	.talent {
-		background-color: #333;
+		background-color: var(--bg-box);
 		border-radius: 4px;
 		overflow: hidden;
 		display: flex;
 		flex-direction: column;
-		border: 1px solid #444;
+		border: 1px solid var(--color-border);
 
 		h3 {
 			margin: 0;
-			background-color: #1f1f1f;
+			background-color: var(--bg-secondary);
 			padding: 8px 10px;
 			font-size: 0.9em;
-			color: #bbb;
+			color: var(--text-label);
 		}
 
 		p {

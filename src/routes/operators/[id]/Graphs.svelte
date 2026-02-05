@@ -11,7 +11,7 @@
 		font-family: sans-serif;
 		height: 100%;
 		width: 100%;
-		background-color: #2a2a2a; 
+		background-color: var(--bg-main); 
 		display: flex;
 		align-items: center;
 		justify-content: center;

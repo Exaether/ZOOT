@@ -35,7 +35,7 @@
 		margin: 0;
 		list-style: none;
 		box-sizing: border-box;
-		background-color: #1f1f1f;
+		background-color: var(--bg-secondary);
 	}
 
 	li {
@@ -51,7 +51,7 @@
 		cursor: pointer;
 		padding-block: .5em;
 		font-family: sans-serif;
-		color: #888;
+		color: var(--text-label);
 		font-weight: bold;
 		font-size: 1.2em;
 		background-color: transparent;
@@ -60,14 +60,14 @@
 	}
 
 	.tab-btn:hover {
-		color: #ddd;
-		background-color: #252525;
+		color: var(--text-primary);
+		background-color: var(--bg-main);
 	}
 
 	li.active > .tab-btn {
-		color: white;
-		background-color: #2a2a2a;
-		border-bottom-color: hsl(200, 80%, 50%);
+		color: var(--text-primary);
+		background-color: var(--bg-main);
+		border-bottom-color: var(--color-accent);
 	}
 
 	@media (max-width: 600px) {

@@ -115,11 +115,11 @@
 
 <style>
 	#attributes {
-		color: whitesmoke;
+		color: var(--text-primary);
 		font-family: sans-serif;
 		height: 100%;
 		width: 100%;
-		background-color: #2a2a2a;
+		background-color: var(--bg-main);
 		display: flex;
 		padding: 1.5rem;
 		box-sizing: border-box;
@@ -138,7 +138,7 @@
 		display: flex;
 		justify-content: space-around;
 		padding: 0.5rem;
-		background-color: #1f1f1f;
+		background-color: var(--bg-secondary);
 		border-radius: 4px;
 
 		input {
@@ -188,14 +188,14 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background-color: #333;
+		background-color: var(--bg-box);
 		box-shadow: 0 0 10px rgba(252, 205, 50, 0.2);
 	}
 
 	.level-circle input {
 		background: none;
 		border: none;
-		color: white;
+		color: var(--text-primary);
 		font-size: 1.8em;
 		font-weight: bold;
 		text-align: center;
@@ -219,7 +219,7 @@
 	}
 
 	.trust-select {
-		background-color: #1f1f1f;
+		background-color: var(--bg-secondary);
 		border-radius: 4px;
 		padding: 10px;
 	}
@@ -235,7 +235,7 @@
 		display: block;
 		margin-top: 0.5rem;
 		font-size: 0.9em;
-		color: #aaa;
+		color: var(--text-desc);
 		text-align: center;
 	}
 
@@ -254,20 +254,20 @@
 	}
 
 	.stat-item {
-		background-color: #333;
+		background-color: var(--bg-box);
 		border-radius: 4px;
 		overflow: hidden;
 		display: flex;
 		flex-direction: column;
 		text-align: center;
-		border: 1px solid #444;
+		border: 1px solid var(--color-border);
 
 		h4 {
 			margin: 0;
-			background-color: #1f1f1f;
+			background-color: var(--bg-secondary);
 			padding: 8px 4px;
 			font-size: 0.85em;
-			color: #bbb;
+			color: var(--text-label);
 			text-transform: uppercase;
 		}
 

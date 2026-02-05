@@ -57,7 +57,7 @@
 			onmouseenter={() => (hoverRarity = i + 1)}
 			onmouseleave={() => (hoverRarity = 0)}
 			aria-label="filter {i} stars"
-			style:left={-i * 0.7}em
+			style:left="{-i * 0.7}em"
 		>
 			<svg
 				class="star s{getStarColor(i + 1)}"
@@ -104,12 +104,12 @@
 
 	.reset {
 		height: 70%;
-		fill: hsl(0, 0%, 50%);
+		fill: var(--icon-reset);
 		transition: fill 0.2s;
 	}
 
 	.reset:hover {
-		fill: hsl(0, 100%, 50%);
+		fill: var(--icon-reset-hover);
 	}
 
 	.star-btn {
@@ -125,25 +125,25 @@
 	}
 
 	.s0 {
-		fill: hsl(0, 0%, 30%);
+		fill: var(--rarity-0);
 	}
 	.s1 {
-		fill: hsl(0, 0%, 100%);
+		fill: var(--rarity-1);
 	}
 	.s2 {
-		fill: hsl(60, 100%, 50%);
+		fill: var(--rarity-2);
 	}
 	.s3 {
-		fill: hsl(210, 100%, 50%);
+		fill: var(--rarity-3);
 	}
 	.s4 {
-		fill: hsl(266, 70%, 65%);
+		fill: var(--rarity-4);
 	}
 	.s5 {
-		fill: hsl(40, 100%, 50%);
+		fill: var(--rarity-5);
 	}
 	.s6 {
-		fill: hsl(20, 100%, 50%);
+		fill: var(--rarity-6);
 	}
 
 	@media (max-width: 600px) {

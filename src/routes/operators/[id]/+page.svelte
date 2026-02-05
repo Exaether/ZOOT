@@ -74,7 +74,7 @@
 	:global(body) {
 		margin: 0;
 		padding: 0;
-		background-color: #1a1a1a;
+		background-color: var(--bg-main);
 		overflow: hidden;
 	}
 
@@ -146,7 +146,7 @@
 		align-items: center;
 		justify-content: center;
 		height: 100%;
-		color: white;
+		color: var(--text-primary);
 		font-style: italic;
 	}
 

@@ -80,7 +80,7 @@
 		width: 4%;
 		display: flex;
 		flex-direction: column;
-		background-color: black;
+		background-color: var(--bg-header);
 		justify-content: space-evenly;
 		align-items: center;
 		overflow-y: scroll;
@@ -92,7 +92,7 @@
 		aspect-ratio: 1 / 1;
 		border-radius: 0;
 		border: none;
-		color: white;
+		color: var(--text-primary);
 		font-weight: bold;
 		font-size: 2em;
 		transition: filter 0.3s;
@@ -103,7 +103,7 @@
 	}
 
 	.subClassFilter {
-		border-right: 5px solid hsl(200, 80%, 50%);
+		border-right: 5px solid var(--color-accent);
 		right: 4%;
 	}
 
@@ -123,7 +123,7 @@
 		}
 		.subClassFilter {
 			top: 12vh;
-			border-top: 5px solid hsl(200, 80%, 50%);
+			border-top: 5px solid var(--color-accent);
 			border-right: none;
 		}
 		.filterButton {

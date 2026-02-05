@@ -59,7 +59,7 @@
 
 <style>
     .potential-select {
-        background-color: #1f1f1f;
+        background-color: var(--bg-secondary);
         border-radius: 4px;
         padding: 0.5em;
         display: flex;
